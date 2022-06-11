@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.loginregister.register.RegisterFragment">
+
+        <LinearLayout
+            android:id="@+id/layoutName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/categories_text_padding"
+            android:background="@drawable/bg_product_item"
+            android:orientation="vertical"
+            android:padding="@dimen/categories_text_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/login_register_edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name" />
+
+            <EditText
+                android:id="@+id/etPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_register_edittext_height"
+                android:ems="10"
+                android:hint="@string/user_name_name"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/categories_text_padding"
+            android:background="@drawable/bg_product_item"
+            android:orientation="vertical"
+            android:padding="@dimen/categories_text_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutName">
+
+            <TextView
+                style="@style/login_register_edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/etEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_register_edittext_height"
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/categories_text_padding"
+            android:background="@drawable/bg_product_item"
+            android:orientation="vertical"
+            android:padding="@dimen/categories_text_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutMail">
+
+            <TextView
+                style="@style/login_register_edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_register_edittext_height"
+                android:background="@drawable/bg_product_item"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/bvRegister"
+            style="@style/extended_fab"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
