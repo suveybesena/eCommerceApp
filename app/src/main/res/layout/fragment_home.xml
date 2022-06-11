@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:padding="@dimen/layout_margin">
+
+
+        <TextView
+            android:id="@+id/tvWelcome"
+            style="@style/title_welcome"
+            android:fontFamily="@font/roboto"
+            android:paddingTop="@dimen/item_padding"
+            android:paddingBottom="@dimen/item_padding"
+            android:paddingStart="@dimen/categories_text_padding"
+            android:text="@string/discover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSearch" />
+
+        <ImageView
+            android:id="@+id/ivUser"
+            android:layout_width="@dimen/user_image_width"
+            android:layout_height="@dimen/user_image_height"
+            android:layout_margin="@dimen/item_margin"
+            android:background="@drawable/bg_user_image"
+            android:contentDescription="@string/user_image"
+            android:src="@drawable/sheldon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/etSearch"
+            app:layout_constraintBottom_toBottomOf="@id/etSearch"/>
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/search_bar_height"
+            android:layout_marginTop="@dimen/item_padding"
+            android:background="@drawable/bg_search_bar"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/search_hint"
+            android:padding="@dimen/item_padding"
+            android:textColor="@color/button_text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/ivUser"
+            app:layout_constraintStart_toEndOf="@id/bvSearch"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/bvSearch"
+            style="@style/image_button"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@+id/etSearch"
+            app:layout_constraintEnd_toStartOf="@id/etSearch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etSearch" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItem"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rv_item_height"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNewProducts" />
+
+        <TextView
+            android:id="@+id/tvCategories"
+            style="@style/title_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/categories_text_padding"
+            android:text="@string/categories"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategories"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rv_categories_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCategories" />
+
+        <TextView
+            android:id="@+id/tvNewProducts"
+            style="@style/title_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/categories_text_padding"
+            android:text="@string/new_products"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvCategories" />
+
+        <TextView
+            android:id="@+id/tvCampaigns"
+            style="@style/title_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/categories_text_padding"
+            android:text="@string/campaigns"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvItem" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCampaigns"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rv_categories_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCampaigns" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

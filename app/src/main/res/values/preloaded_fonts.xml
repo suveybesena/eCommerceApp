@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/abeezee</item>
+        <item>@font/acme</item>
+        <item>@font/andika_new_basic</item>
+        <item>@font/kodchasan</item>
+        <item>@font/kodchasan_bold</item>
+        <item>@font/kodchasan_extralight</item>
+        <item>@font/kodchasan_light</item>
+        <item>@font/roboto</item>
+        <item>@font/roboto_medium</item>
+        <item>@font/roboto_thin</item>
+        <item>@font/text_me_one</item>
+    </array>
+</resources>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="title_welcome">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="title_categories">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="product_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="user_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="check_product_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/check_text_size</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="shopping_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/shopping_subtotal_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="product_desc">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+    </style>
+
+    <style name="product_price" parent="title_welcome">
+        <item name="android:layout_marginTop">@dimen/product_price_margin_top</item>
+    </style>
+
+    <style name="check_product_desc">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textSize">@dimen/check_text_size</item>
+    </style>
+
+    <style name="check_product_price" parent="title_welcome">
+        <item name="android:layout_marginTop">@dimen/product_price_margin_top</item>
+    </style>
+
+    <style name="image_button">
+        <item name="android:layout_width">@dimen/user_image_width</item>
+        <item name="android:layout_height">@dimen/user_image_height</item>
+        <item name="android:layout_margin">@dimen/item_margin</item>
+        <item name="android:background">@drawable/bg_search_bar</item>
+        <item name="android:contentDescription">@string/search_hint</item>
+        <item name="android:padding">@dimen/item_padding</item>
+    </style>
+
+    <style name="fav_button">
+        <item name="android:layout_width">@dimen/fav_button_size</item>
+        <item name="android:layout_height">@dimen/fav_button_size</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/bg_fav_button</item>
+        <item name="android:contentDescription">@string/search_hint</item>
+        <item name="android:padding">@dimen/item_padding</item>
+    </style>
+
+    <style name="button">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_search_bar</item>
+        <item name="android:backgroundTint">@color/button_text</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="fav_card_button">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_cart</item>
+        <item name="android:backgroundTint">@color/background</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="floating_action_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/search_bg</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="extended_fab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/button_text</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+</resources>

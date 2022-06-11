@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Capstone Project</string>
+    <string name="welcome">Welcome.</string>
+    <string name="favorites">Favorites</string>
+    <string name="search_hint">Search</string>
+    <string name="user_image">User Image.</string>
+    <string name="categories">Categories</string>
+    <string name="new_products">New Products</string>
+    <string name="campaigns">Campaigns</string>
+    <string name="check_this_out">Check this out</string>
+    <string name="arrow_back">Back</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_desc">Product Description</string>
+    <string name="product_price">50 $</string>
+    <string name="add_button">Cart</string>
+    <string name="proceed_checkout">Proceed To Checkout</string>
+    <string name="shopping_bag">Shopping Bag</string>
+    <string name="subtotal">Subtotal :</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_collection">Your collection is empty, do you want to add something?</string>
+    <string name="discover">Discover</string>
+    <string name="user_name">Name</string>
+    <string name="mail">Mail</string>
+    <string name="phone">Phone</string>
+    <string name="purchased_items">Purchased Items</string>
+    <string name="_25">25</string>
+    <string name="birthday">Birthday</string>
+
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_add_card.xml" value="0.147" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_card_button.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_cart.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_fav_button.xml" value="0.1075" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_indicator.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_product_item.xml" value="0.1715" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_profile.xml" value="0.116" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_recycler.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_search_bar.xml" value="0.139" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/bg_user_image.xml" value="0.108" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/ic_add.xml" value="0.116" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/ic_favorite.xml" value="0.1075" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/ic_favorite_border.xml" value="0.1075" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/drawable/ic_search.xml" value="0.139" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/font/kodchasan_light.xml" value="0.234375" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/bg_card_button.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/bottom_navigation_bar.xml" value="0.15489130434782608" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_collection.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_favorites.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_my_collection.xml" value="0.2" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_my_favorites.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_profile.xml" value="0.21" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_shopping.xml" value="0.22" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_campaigns.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_category.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_check_this_out.xml" value="0.25" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_my_favorites.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_product.xml" value="0.5" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_shopping.xml" value="0.18" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/menu/menu_items.xml" value="0.1675213675213675" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
