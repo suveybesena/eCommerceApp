@@ -27,4 +27,8 @@
         android:name="com.example.capstoneproject.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/loginRegisterFragment"
+        android:name="com.example.capstoneproject.presentation.loginregister.LoginRegisterFragment"
+        android:label="LoginRegisterFragment" />
 </navigation>
