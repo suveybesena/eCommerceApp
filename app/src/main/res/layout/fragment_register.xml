@@ -3,109 +3,205 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.loginregister.register.RegisterFragment">
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
-        <LinearLayout
-            android:id="@+id/layoutName"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/categories_text_padding"
-            android:background="@drawable/bg_product_item"
-            android:orientation="vertical"
-            android:padding="@dimen/categories_text_padding"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            tools:context=".presentation.loginregister.register.RegisterFragment">
 
-            <TextView
-                style="@style/login_register_edit_title"
+            <LinearLayout
+                android:id="@+id/layoutName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/user_name" />
-
-            <EditText
-                android:id="@+id/etPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_register_edittext_height"
-                android:ems="10"
-                android:hint="@string/user_name_name"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/categories_text_padding"
-            android:background="@drawable/bg_product_item"
-            android:orientation="vertical"
-            android:padding="@dimen/categories_text_padding"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutName">
-
-            <TextView
-                style="@style/login_register_edit_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/email" />
-
-            <EditText
-                android:id="@+id/etEmailAddress"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_register_edittext_height"
-                android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutPass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/categories_text_padding"
-            android:background="@drawable/bg_product_item"
-            android:orientation="vertical"
-            android:padding="@dimen/categories_text_padding"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutMail">
-
-            <TextView
-                style="@style/login_register_edit_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/password" />
-
-            <EditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_register_edittext_height"
+                android:layout_margin="@dimen/categories_text_padding"
                 android:background="@drawable/bg_product_item"
-                android:ems="10"
-                android:hint="@string/password"
-                android:inputType="textPassword" />
+                android:orientation="vertical"
+                android:padding="@dimen/categories_text_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/login_register_edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/bvRegister"
-            style="@style/extended_fab"
-            android:layout_width="match_parent"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="@string/sign_up"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:borderWidth="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                <EditText
+                    android:id="@+id/etPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_register_edittext_height"
+                    android:ems="10"
+                    android:hint="@string/user_name_name"
+                    android:inputType="textPersonName" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:background="@drawable/bg_product_item"
+                android:orientation="vertical"
+                android:padding="@dimen/categories_text_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutName">
+
+                <TextView
+                    style="@style/login_register_edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email" />
+
+                <EditText
+                    android:id="@+id/etEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_register_edittext_height"
+                    android:ems="10"
+                    android:hint="@string/email"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:background="@drawable/bg_product_item"
+                android:orientation="vertical"
+                android:padding="@dimen/categories_text_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutMail">
+
+                <TextView
+                    style="@style/login_register_edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_register_edittext_height"
+                    android:background="@drawable/bg_product_item"
+                    android:ems="10"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:background="@drawable/bg_product_item"
+                android:orientation="vertical"
+                android:padding="@dimen/categories_text_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutPass">
+
+                <TextView
+                    style="@style/login_register_edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_name" />
+
+                <EditText
+                    android:id="@+id/etUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_register_edittext_height"
+                    android:background="@drawable/bg_product_item"
+                    android:ems="10"
+                    android:hint="@string/user_name"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutUserLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:background="@drawable/bg_product_item"
+                android:orientation="vertical"
+                android:padding="@dimen/categories_text_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutUserName">
+
+                <TextView
+                    style="@style/login_register_edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_name" />
+
+                <EditText
+                    android:id="@+id/etLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_register_edittext_height"
+                    android:background="@drawable/bg_product_item"
+                    android:ems="10"
+                    android:hint="@string/last_name"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:background="@drawable/bg_product_item"
+                android:orientation="vertical"
+                android:padding="@dimen/categories_text_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutUserLastName">
+
+                <TextView
+                    style="@style/login_register_edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_" />
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_register_edittext_height"
+                    android:background="@drawable/bg_product_item"
+                    android:ems="10"
+                    android:hint="@string/phone"
+                    android:inputType="phone" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/bvRegister"
+                style="@style/extended_fab"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="@string/sign_up"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:borderWidth="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutPhone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
