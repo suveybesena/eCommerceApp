@@ -1,17 +1,26 @@
 package com.example.capstoneproject.presentation.favorites.myfavorites
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.capstoneproject.common.extensions.Constant
 import com.example.capstoneproject.databinding.FragmentMyFavoritesBinding
-import com.example.capstoneproject.domain.model.Item
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class MyFavoritesFragment : Fragment() {
     private var myFavoritesBinding: FragmentMyFavoritesBinding? = null
     lateinit var myFavoritesAdapter: MyFavoritesAdapter
+    private val myFavoritesViewModel: MyFavoritesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,44 +33,29 @@ class MyFavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        observeData()
+        initObserve()
     }
 
-    private fun observeData() {
-        val item1 = Item(
-            "ürün1fghfh",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Cosmetics-beauty-products-for-makeup-on-transparent-background-PNG.png",
-            "ürünfghfghfhfghfhgfgh"
+    private fun initObserve() {
+        val sharedPref = activity?.getSharedPreferences(
+            "getSharedPref", Context.MODE_PRIVATE
         )
+        sharedPref?.getString(Constant.SHARED_PREF_KEY, null)
+            ?.let { userId ->
+                myFavoritesViewModel.handleEvent(MyFavoritesUiEvent.GetAllFavorites(userId))
+            }
 
-        val item2 = Item(
-            "ürün2",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Cosmetics-beauty-products-for-makeup-on-transparent-background-PNG.png",
-            "ürün"
-        )
-
-        val item3 = Item(
-            "ürün3",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Cosmetics-beauty-products-for-makeup-on-transparent-background-PNG.png",
-            "ürün"
-        )
-
-        val item4 = Item(
-            "ürün4",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Collection-of-make-up-products-on-transparent-background-PNG.png",
-            "ürün"
-        )
-        val list = arrayListOf<Item>()
-        list.add(item1)
-        list.add(item2)
-        list.add(item3)
-        list.add(item4)
-
-        myFavoritesAdapter.differ.submitList(list)
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                myFavoritesViewModel._uiState.collect { state ->
+                    state.favorites.let { flow ->
+                        flow?.collect { favorites ->
+                            myFavoritesAdapter.differ.submitList(favorites)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun initRecyclerView() {
