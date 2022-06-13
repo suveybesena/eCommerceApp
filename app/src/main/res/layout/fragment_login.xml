@@ -10,7 +10,7 @@
         tools:context=".presentation.loginregister.login.LoginFragment">
 
         <LinearLayout
-            android:id="@+id/layoutMail"
+            android:id="@+id/layoutUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/categories_text_padding"
@@ -25,15 +25,15 @@
                 style="@style/login_register_edit_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/email" />
+                android:text="@string/user_name" />
 
             <EditText
-                android:id="@+id/etEmailAddress"
+                android:id="@+id/etUserName"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_register_edittext_height"
                 android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress" />
+                android:hint="@string/user_name"
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
@@ -47,7 +47,7 @@
             android:padding="@dimen/categories_text_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutMail">
+            app:layout_constraintTop_toBottomOf="@id/layoutUserName">
 
             <TextView
                 style="@style/login_register_edit_title"
@@ -67,7 +67,7 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/bvRegister"
+            android:id="@+id/bvLogin"
             style="@style/extended_fab"
             android:layout_width="match_parent"
             android:fontFamily="@font/roboto"
