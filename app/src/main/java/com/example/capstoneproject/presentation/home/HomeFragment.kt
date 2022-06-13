@@ -1,23 +1,37 @@
 package com.example.capstoneproject.presentation.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.capstoneproject.R
+import com.example.capstoneproject.common.extensions.Constant
+import com.example.capstoneproject.common.extensions.Constant.SHARED_PREF_KEY
+import com.example.capstoneproject.data.model.product.Favorites
+import com.example.capstoneproject.data.model.product.Product
 import com.example.capstoneproject.databinding.FragmentHomeBinding
-import com.example.capstoneproject.domain.model.Category
 import com.example.capstoneproject.domain.model.Item
 import com.mig35.carousellayoutmanager.CarouselLayoutManager
 import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener
 import com.mig35.carousellayoutmanager.CenterScrollListener
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var homeBinding: FragmentHomeBinding? = null
-    lateinit var itemAdapter: ItemsAdapter
+    private val homeViewModel: HomeViewModel by viewModels()
+    lateinit var productsAdapter: ProductsAdapter
     lateinit var categoriesAdapter: CategoriesAdapter
     lateinit var campaignsAdapter: CampaignsAdapter
 
@@ -32,10 +46,74 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        observeData()
+        initObserve()
+        // initListeners()
     }
 
-    private fun observeData() {
+    private fun initListeners() {
+    }
+
+    private fun goCategoriesFragment(categoryName: String) {
+        val bundle = Bundle().apply {
+            putString(Constant.STRING_ARGS_ID, categoryName)
+        }
+        findNavController().navigate(
+            R.id.action_homeFragment_to_categoriesFragment,
+            bundle
+        )
+    }
+
+    private fun goDetailFragment(product: Product) {
+        val bundle = Bundle().apply {
+            putParcelable(Constant.PARCELABLE_ARGS_ID, product)
+        }
+        findNavController().navigate(
+            R.id.action_homeFragment_to_detailFragment,
+            bundle
+        )
+    }
+
+    private fun addFavoritesToDb(product: Product) {
+        val sharedPref = activity?.getSharedPreferences(
+            "getSharedPref", Context.MODE_PRIVATE
+        )
+        val pref = sharedPref?.getString(SHARED_PREF_KEY, null)
+        val favoriteProduct = Favorites(product.title, pref, product.price, product.image)
+        homeViewModel.handleEvent(HomeUiEvent.InsertProductToFavorite(favoriteProduct))
+    }
+
+    private fun initObserve() {
+        homeViewModel.handleEvent(HomeUiEvent.GetAllCategories)
+        homeViewModel.handleEvent(HomeUiEvent.GetAllProducts)
+        homeViewModel.handleEvent(HomeUiEvent.GetLastUser)
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                homeViewModel._uiState.collect { state ->
+                    state.categories.let { categories ->
+                        categoriesAdapter.differ.submitList(categories)
+                    }
+                    state.products.let { product ->
+                        productsAdapter.differ.submitList(product)
+                    }
+                    state.currentUser?.let { flowList ->
+                        flowList.collect { userList ->
+                            val currentUserId = userList.lastIndex.toString()
+                            val sharedPref =
+                                activity?.getSharedPreferences(
+                                    "getSharedPref",
+                                    Context.MODE_PRIVATE
+                                )
+                            with(sharedPref?.edit()) {
+                                this?.putString(SHARED_PREF_KEY, currentUserId)
+                                this?.apply()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         val item1 = Item(
             "ürün1fghfh",
             "25",
@@ -70,45 +148,34 @@ class HomeFragment : Fragment() {
         list.add(item3)
         list.add(item4)
 
-        itemAdapter.differ.submitList(list)
         campaignsAdapter.differ.submitList(list)
-
-        val categoriesItem1 = Category(
-            "a",
-            "https://cdn.shopify.com/s/files/1/1338/0845/collections/lippie-pencil_grande.jpg?v=1512588769"
-        )
-        val categoriesItem2 = Category(
-            "´b",
-            "https://theaoi.com/wp-content/uploads/2020/01/ayshatengiz_aspotoflonliness1-846x1200.jpg"
-        )
-        val categoriesItem3 = Category(
-            "´c",
-            "https://theaoi.com/wp-content/uploads/2020/02/Franc%CC%A7ois-Truffaut_Victria_Semykina_image04-849x1200.jpg"
-        )
-        val categoriesItem4 = Category(
-            "´d",
-            "https://theaoi.com/wp-content/uploads/2020/02/Franc%CC%A7ois-Truffaut_Victria_Semykina_image04-849x1200.jpg"
-        )
-
-        val list2 = arrayListOf<Category>()
-        list2.add(categoriesItem1)
-        list2.add(categoriesItem2)
-        list2.add(categoriesItem3)
-        list2.add(categoriesItem4)
-
-        categoriesAdapter.differ.submitList(list2)
     }
 
     private fun initRecyclerView() {
-        itemAdapter = ItemsAdapter()
+        productsAdapter = ProductsAdapter(object : OnProductListClickHandler {
+            override fun goDetailPage(product: Product) {
+                goDetailFragment(product)
+            }
+
+        }, object : OnProductListToFavoritesClickHandler {
+            override fun addFavorites(product: Product) {
+                addFavoritesToDb(product)
+            }
+
+        })
         homeBinding?.apply {
-            rvItem.adapter = itemAdapter
+            rvItem.adapter = productsAdapter
             rvItem.layoutManager = GridLayoutManager(requireContext(), 2)
         }
 
         val layoutManagerHorizontal = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL)
         layoutManagerHorizontal.setPostLayoutListener(CarouselZoomPostLayoutListener())
-        categoriesAdapter = CategoriesAdapter()
+        categoriesAdapter = CategoriesAdapter(object : OnCategoryListClickHandler {
+            override fun goCategoryPage(categoryName: String) {
+                goCategoriesFragment(categoryName)
+            }
+
+        })
         homeBinding?.rvCategories?.adapter = categoriesAdapter
         homeBinding?.rvCategories?.layoutManager = layoutManagerHorizontal
         homeBinding?.rvCategories?.setHasFixedSize(true)
@@ -122,6 +189,7 @@ class HomeFragment : Fragment() {
         }
 
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
