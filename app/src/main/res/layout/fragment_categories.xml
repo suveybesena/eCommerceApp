@@ -22,7 +22,7 @@
         <TextView
             style="@style/shopping_text"
             android:fontFamily="@font/roboto"
-            android:text="@string/shopping_bag"
+            android:text="@string/categories"
             app:layout_constraintBottom_toBottomOf="@id/bvArrowBack"
             app:layout_constraintEnd_toStartOf="@id/bvCard"
             app:layout_constraintStart_toEndOf="@id/bvArrowBack"
@@ -38,52 +38,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/bvProceedToCheckout"
-            style="@style/extended_fab"
-            android:layout_width="match_parent"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="@string/proceed_checkout"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:borderWidth="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvShoppingItems"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/rv_item_height"
+            android:layout_height="0dp"
             android:padding="@dimen/item_padding"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bvArrowBack" />
-
-        <TextView
-            android:id="@+id/tvShoppingSubTotal"
-            style="@style/shopping_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/layout_margin"
-            android:fontFamily="@font/roboto"
-            android:text="@string/subtotal"
-            app:layout_constraintBottom_toTopOf="@id/bvProceedToCheckout"
-            app:layout_constraintStart_toStartOf="@id/bvArrowBack" />
-
-        <TextView
-            android:id="@+id/tvShoppingPrice"
-            style="@style/title_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/layout_margin"
-            android:fontFamily="@font/roboto"
-            android:text="@string/product_price"
-            app:layout_constraintBottom_toTopOf="@id/bvProceedToCheckout"
-            app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
