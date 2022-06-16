@@ -12,7 +12,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/shoppingFragment"
+        android:id="@+id/basketFragment"
         android:icon="@drawable/ic_shopping_bag"
         android:title="" />
 
