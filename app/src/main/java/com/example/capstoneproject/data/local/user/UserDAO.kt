@@ -2,7 +2,7 @@ package com.example.capstoneproject.data.local.user
 
 import androidx.room.*
 import com.example.capstoneproject.common.Constant
-import com.example.capstoneproject.data.model.user.User
+import com.example.capstoneproject.data.entities.user.User
 import kotlinx.coroutines.flow.Flow
 
 @Dao
