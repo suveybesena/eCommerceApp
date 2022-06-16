@@ -1,48 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/check_product_image_layout"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/item_product_layout_margin"
-    android:background="@drawable/bg_product_item"
-    android:padding="@dimen/item_product_layout_margin">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/ivProduct"
-        android:layout_width="@dimen/check_product_image_width"
-        android:layout_height="@dimen/check_product_image_height"
-        android:background="@drawable/cream"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius_small"
+            app:cardElevation="@dimen/card_elevation_small">
 
-    <TextView
-        android:id="@+id/tvProductName"
-        style="@style/check_product_name"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/product_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivProduct" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvProductDesc"
-        style="@style/check_product_desc"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/product_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProductName" />
-
-    <TextView
-        android:id="@+id/tvProductPrice"
-        style="@style/product_name"
-        android:fontFamily="@font/roboto"
-        android:text="@string/product_price"
-        android:textSize="@dimen/check_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProductDesc" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/ivProduct"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/example"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+</layout>
