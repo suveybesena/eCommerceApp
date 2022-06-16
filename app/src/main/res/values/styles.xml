@@ -9,6 +9,14 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="login_register_edit_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="title_categories">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -18,12 +26,50 @@
     </style>
 
     <style name="product_name">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/item_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">@dimen/shopping_text_padding_start</item>
+    </style>
+
+    <style name="item_product_name">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/item_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="product_count">
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/count_size</item>
+        <item name="android:padding">@dimen/item_padding</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="detail_product_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">@dimen/shopping_text_padding_start</item>
+    </style>
+
+    <style name="detail_product_desc">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textSize">@dimen/subtitle</item>
         <item name="android:padding">@dimen/user_image_stroke</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">@dimen/shopping_text_padding_start</item>
     </style>
 
     <style name="user_name">
@@ -54,15 +100,24 @@
     </style>
 
     <style name="product_desc">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:padding">@dimen/user_image_stroke</item>
-        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:layout_marginStart">@dimen/shopping_text_padding_start</item>
+        <item name="android:textSize">@dimen/item_text</item>
+    </style>
+    <style name="item_product_desc">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textSize">@dimen/item_text</item>
     </style>
 
     <style name="product_price" parent="title_welcome">
         <item name="android:layout_marginTop">@dimen/product_price_margin_top</item>
+        <item name="android:layout_marginStart">@dimen/shopping_text_padding_start</item>
     </style>
 
     <style name="check_product_desc">
@@ -71,6 +126,14 @@
         <item name="android:textColor">@color/button_text</item>
         <item name="android:padding">@dimen/user_image_stroke</item>
         <item name="android:textSize">@dimen/check_text_size</item>
+    </style>
+
+    <style name="empty_list_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textSize">@dimen/subtitle</item>
     </style>
 
     <style name="check_product_price" parent="title_welcome">
@@ -115,6 +178,22 @@
         <item name="android:backgroundTint">@color/search_bg</item>
         <item name="android:foregroundGravity">center</item>
         <item name="android:tint">@color/white</item>
+
+    </style>
+    <style name="produtc_floating_action_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:backgroundTint">@color/search_bg</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="android:tint">@color/white</item>
+
+    </style>
+    <style name="delete_floating_action_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:backgroundTint">@color/search_bg</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="android:tint">@color/white</item>
     </style>
 
     <style name="extended_fab">
@@ -123,5 +202,21 @@
         <item name="android:backgroundTint">@color/button_text</item>
         <item name="android:foregroundGravity">center</item>
         <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="extended_fab_profile">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="card_view_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius_small</item>
+        <item name="cardElevation">@dimen/card_elevation_small</item>
+
     </style>
 </resources>
