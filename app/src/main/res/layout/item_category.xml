@@ -6,27 +6,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
             android:id="@+id/ivCategories"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/record"
+            android:layout_width="@dimen/rv_categories_width"
+            android:layout_height="@dimen/rv_categories_height"
+            android:src="@drawable/blues"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvCatName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_name"
-            android:fontFamily="@font/roboto"
-            style="@style/login_register_edit_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivCategories" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
