@@ -8,8 +8,8 @@
 
         <ImageView
             android:id="@+id/ivShoppingProduct"
-            android:layout_width="@dimen/shopping_image_width"
-            android:layout_height="@dimen/shopping_image_height"
+            android:layout_width="@dimen/fav_product_image_width"
+            android:layout_height="@dimen/fav_product_image_height"
             android:src="@drawable/cream"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,8 @@
             android:text="@string/product_name"
             app:layout_constraintBottom_toBottomOf="@id/tvShoppingProductDesc"
             app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-            app:layout_constraintTop_toTopOf="@id/ivShoppingProduct" />
+            app:layout_constraintTop_toTopOf="@id/ivShoppingProduct"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/tvShoppingProductDesc"
@@ -30,6 +31,7 @@
             android:fontFamily="@font/roboto_thin"
             android:paddingStart="@dimen/shopping_text_padding_start"
             android:text="@string/product_desc"
+            app:layout_constraintEnd_toStartOf="@id/layoutAddOrRemove"
             app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
             app:layout_constraintTop_toBottomOf="@id/tvShoppingProductName" />
 
@@ -43,23 +45,20 @@
             app:layout_constraintTop_toBottomOf="@id/tvShoppingProductDesc" />
 
         <LinearLayout
+            android:id="@+id/layoutAddOrRemove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/bg_user_image"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <ImageButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bvMinus"
-                android:layout_width="@dimen/add_card_button_size"
-                android:layout_height="@dimen/add_card_button_size"
-                android:layout_margin="@dimen/add_card_button_margin"
-                android:background="@drawable/ic_remove" />
+                style="@style/floating_action_button"
+                android:src="@drawable/ic_remove"
+                app:borderWidth="0dp"
+                app:fabCustomSize="30dp" />
 
             <TextView
                 android:id="@+id/tvItemCount"
@@ -71,12 +70,12 @@
                 android:textColor="@color/button_text"
                 android:textSize="@dimen/add_card_text_size" />
 
-            <ImageButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/bvPlus"
-                android:layout_width="@dimen/add_card_button_size"
-                android:layout_height="@dimen/add_card_button_size"
-                android:layout_margin="@dimen/add_card_button_margin"
-                android:background="@drawable/ic_add" />
+                style="@style/floating_action_button"
+                android:src="@drawable/ic_add"
+                app:borderWidth="0dp"
+                app:fabCustomSize="30dp" />
 
         </LinearLayout>
 
