@@ -1,4 +1,4 @@
-package com.example.capstoneproject.data.model.product
+package com.example.capstoneproject.data.entities.product
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

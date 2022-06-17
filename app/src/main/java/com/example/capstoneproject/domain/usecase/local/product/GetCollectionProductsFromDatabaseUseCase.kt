@@ -1,7 +1,6 @@
-package com.example.capstoneproject.domain.usecase.local
+package com.example.capstoneproject.domain.usecase.local.product
 
-import com.example.capstoneproject.common.extensions.Resource
-import com.example.capstoneproject.data.model.product.Favorites
+import com.example.capstoneproject.common.Resource
 import com.example.capstoneproject.di.IoDispatcher
 import com.example.capstoneproject.domain.repository.LocalRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -10,15 +9,15 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 
-class InsertProductToFavoritesUseCase @Inject constructor(
+class GetCollectionProductsFromDatabaseUseCase @Inject constructor(
     private val localRepository: LocalRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) {
-    suspend fun invoke(favorites: Favorites) = flow {
+    suspend fun invoke(userId: String) = flow {
         emit(Resource.Loading)
         try {
-            val favorites = localRepository.insertProductToFavorites(favorites)
-            emit(Resource.Success(favorites))
+            val collectionProduct = localRepository.getCollectionProducts(userId)
+            emit(Resource.Success(collectionProduct))
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
         }
