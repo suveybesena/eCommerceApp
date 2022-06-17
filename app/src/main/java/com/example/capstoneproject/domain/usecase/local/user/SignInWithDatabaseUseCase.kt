@@ -1,4 +1,4 @@
-package com.example.capstoneproject.domain.usecase.local
+package com.example.capstoneproject.domain.usecase.local.user
 
 import com.example.capstoneproject.common.Resource
 import com.example.capstoneproject.di.IoDispatcher
