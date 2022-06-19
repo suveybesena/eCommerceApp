@@ -2,6 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <solid
-        android:color="#7EFFFFFF"/>
+        android:color="#BEFFFFFF"/>
     <corners android:radius="@dimen/search_bar_radius" />
 </shape>
