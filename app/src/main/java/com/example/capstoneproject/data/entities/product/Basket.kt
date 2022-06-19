@@ -9,6 +9,8 @@ import com.example.capstoneproject.common.Constant
 data class Basket(
     @ColumnInfo(name = Constant.LOCAL_DB_PRODUCT_TITLE)
     var productName: String?,
+    @ColumnInfo(name = Constant.LOCAL_DB_PRODUCT_DESCRIPTION)
+    var productDescription: String?,
     @ColumnInfo(name = Constant.LOCAL_DB_PRODUCT_COUNT)
     val productCount: String?,
     @ColumnInfo(name = Constant.LOCAL_DB_PRODUCT_CURRENT_USER_UD)
