@@ -47,5 +47,10 @@
     <string name="product_description">Product Description</string>
     <string name="product_image">Product Image</string>
     <string name="product_category">Product Category</string>
+    <string name="product_count">Product Count</string>
+    <string name="sale">Sale</string>
+    <string name="user_phone">User Phone</string>
+    <string name="user_address">User Address</string>
+    <string name="address">Address</string>
 
 </resources>
