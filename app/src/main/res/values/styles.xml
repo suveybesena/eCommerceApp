@@ -44,6 +44,24 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="basket_item_count">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/item_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="shopping_item_product_name">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textSize">@dimen/item_text</item>
+        <item name="android:padding">@dimen/user_image_stroke</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="product_count">
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textSize">@dimen/count_size</item>
@@ -213,6 +231,14 @@
 
     <style name="card_view_style">
         <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius_small</item>
+        <item name="cardElevation">@dimen/card_elevation_small</item>
+
+    </style>
+    <style name="profile_card_view_style">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="cardBackgroundColor">@color/white</item>
         <item name="cardCornerRadius">@dimen/card_corner_radius_small</item>
