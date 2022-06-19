@@ -2,7 +2,7 @@ package com.example.capstoneproject.data.local.product.basket
 
 import androidx.room.*
 import com.example.capstoneproject.common.Constant
-import com.example.capstoneproject.data.model.product.Basket
+import com.example.capstoneproject.data.entities.product.Basket
 import kotlinx.coroutines.flow.Flow
 
 @Dao
