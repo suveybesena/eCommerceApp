@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.capstoneproject.common.extensions.downloadImage
 import com.example.capstoneproject.databinding.ItemCategoryBinding
-import com.example.capstoneproject.domain.model.Category
+import com.example.capstoneproject.data.model.Category
 
-class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesVH>() {
+class CategoriesAdapter(private val onCategoryListClickHandler: OnCategoryListClickHandler) :
+    RecyclerView.Adapter<CategoriesAdapter.CategoriesVH>() {
     class CategoriesVH(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallBack = object : DiffUtil.ItemCallback<Category>() {
@@ -40,10 +40,10 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesVH>()
     override fun onBindViewHolder(holder: CategoriesVH, position: Int) {
         val list = differ.currentList[position]
         holder.binding.apply {
-            list.catImage.let { image ->
-                ivCategories.downloadImage(image)
-            }
-            tvCatName.text = list.catName
+            ivCategories.setImageResource(list.categoryImage)
+        }
+        holder.itemView.setOnClickListener {
+            onCategoryListClickHandler.goCategoryPage(list.categoryName)
         }
     }
 
