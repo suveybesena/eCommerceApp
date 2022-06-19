@@ -1,5 +1,6 @@
 package com.example.capstoneproject.presentation.categories
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +15,16 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.capstoneproject.R
 import com.example.capstoneproject.common.Constant
-import com.example.capstoneproject.data.model.product.Product
+import com.example.capstoneproject.common.Constant.INSERT_PRODUCT_COLLECTIONS
+import com.example.capstoneproject.common.Constant.INSERT_PRODUCT_FAVORITES
+import com.example.capstoneproject.data.entities.product.Collection
+import com.example.capstoneproject.data.entities.product.Favorites
+import com.example.capstoneproject.data.entities.product.Product
 import com.example.capstoneproject.databinding.FragmentCategoriesBinding
 import com.example.capstoneproject.presentation.home.OnProductListClickHandler
+import com.example.capstoneproject.presentation.home.OnProductListToCollectionsClickHandler
+import com.example.capstoneproject.presentation.home.OnProductListToFavoritesClickHandler
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -40,6 +48,13 @@ class CategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObserve()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        categoriesBinding?.bvArrowBack?.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun initObserve() {
@@ -52,8 +67,8 @@ class CategoriesFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 categoriesViewModel._uiState.collect { state ->
-                    state.products.let { product ->
-                        categoriesResultAdapter.differ.submitList(product)
+                    state.productModels.let { products ->
+                        categoriesResultAdapter.differ.submitList(products)
                     }
                 }
             }
@@ -62,15 +77,60 @@ class CategoriesFragment : Fragment() {
 
     private fun initRecyclerView() {
         categoriesResultAdapter = CategoriesResultAdapter(object : OnProductListClickHandler {
-            override fun goDetailPage(product: Product) {
-                goDetailFragment(product)
+            override fun goDetailPage(productModel: Product) {
+                goDetailFragment(productModel)
             }
-
-        })
+        },
+            object : OnProductListToCollectionsClickHandler {
+                override fun addCollections(productModel: Product) {
+                    addCollection(productModel)
+                }
+            },
+            object : OnProductListToFavoritesClickHandler {
+                override fun addFavorites(productModel: Product) {
+                    addFavorite(productModel)
+                }
+            })
         categoriesBinding?.apply {
             rvShoppingItems.adapter = categoriesResultAdapter
             rvShoppingItems.layoutManager = GridLayoutManager(requireContext(), 2)
         }
+    }
+
+    private fun addFavorite(product: Product) {
+        val sharedPref = activity?.getSharedPreferences(
+            "getSharedPref", Context.MODE_PRIVATE
+        )
+        val userId = sharedPref?.getString(Constant.SHARED_PREF_KEY, null)
+        val favoriteProduct =
+            Favorites(
+                product.productTitle,
+                userId,
+                product.productPrice,
+                product.productImage
+            )
+        categoriesViewModel.handleEvent(CategoriesUiEvent.InsertProductToFavorites(favoriteProduct))
+        Snackbar.make(requireView(), INSERT_PRODUCT_FAVORITES, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun addCollection(product: Product) {
+        val sharedPref = activity?.getSharedPreferences(
+            "getSharedPref", Context.MODE_PRIVATE
+        )
+        val userId = sharedPref?.getString(Constant.SHARED_PREF_KEY, null)
+        val collectionProduct =
+            Collection(
+                product.productTitle,
+                userId,
+                product.productPrice,
+                product.productImage
+            )
+        categoriesViewModel.handleEvent(
+            CategoriesUiEvent.InsertProductToCollections(
+                collectionProduct
+            )
+        )
+        Snackbar.make(requireView(), INSERT_PRODUCT_COLLECTIONS, Snackbar.LENGTH_LONG).show()
     }
 
     fun goDetailFragment(product: Product) {
