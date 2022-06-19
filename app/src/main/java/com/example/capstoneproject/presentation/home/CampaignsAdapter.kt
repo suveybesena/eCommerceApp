@@ -6,23 +6,24 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.common.extensions.downloadImage
+import com.example.capstoneproject.data.entities.product.Product
 import com.example.capstoneproject.databinding.ItemCampaignsBinding
-import com.example.capstoneproject.domain.model.Item
 
-class CampaignsAdapter : RecyclerView.Adapter<CampaignsAdapter.ItemVH>() {
+class CampaignsAdapter(private val onProductListClickHandler: OnProductListClickHandler) :
+    RecyclerView.Adapter<CampaignsAdapter.ItemVH>() {
     class ItemVH(val binding: ItemCampaignsBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private val differCallBack = object : DiffUtil.ItemCallback<Item>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return true
         }
 
         override fun areContentsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return true
         }
@@ -37,11 +38,15 @@ class CampaignsAdapter : RecyclerView.Adapter<CampaignsAdapter.ItemVH>() {
     }
 
     override fun onBindViewHolder(holder: ItemVH, position: Int) {
-        val list = differ.currentList[position]
+        val product = differ.currentList[position]
         holder.binding.apply {
-            list.productImage.let { image ->
+            product.productImage?.let { image ->
                 ivCampaigns.downloadImage(image)
             }
+            //tvCampaign.text = product.productTitle
+        }
+        holder.itemView.setOnClickListener {
+            onProductListClickHandler.goDetailPage(product)
         }
     }
 
