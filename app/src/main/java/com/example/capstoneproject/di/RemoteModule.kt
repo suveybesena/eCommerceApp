@@ -1,6 +1,6 @@
 package com.example.capstoneproject.di
 
-import com.example.capstoneproject.common.extensions.Constant.BASE_URL
+import com.example.capstoneproject.common.Constant.BASE_URL
 import com.example.capstoneproject.data.remote.ProductAPI
 import com.example.capstoneproject.data.remote.UserAPI
 import dagger.Module

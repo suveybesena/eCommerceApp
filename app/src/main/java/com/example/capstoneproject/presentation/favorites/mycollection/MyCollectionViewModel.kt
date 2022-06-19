@@ -67,7 +67,6 @@ class MyCollectionViewModel @Inject constructor(
                 }
             }
         }
-
     }
 
     private fun getAllProducts() {

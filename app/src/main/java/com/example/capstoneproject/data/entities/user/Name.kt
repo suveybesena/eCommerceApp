@@ -1,4 +1,4 @@
-package com.example.capstoneproject.data.model.user
+package com.example.capstoneproject.data.entities.user
 
 data class Name(
     val firstname: String,

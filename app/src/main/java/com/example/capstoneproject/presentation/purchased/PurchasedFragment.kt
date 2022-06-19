@@ -1,6 +1,5 @@
 package com.example.capstoneproject.presentation.purchased
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +9,21 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.capstoneproject.common.Constant
+import androidx.navigation.fragment.findNavController
 import com.example.capstoneproject.databinding.FragmentPurchasedBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PurchasedFragment : Fragment() {
     private var purchasedBinding: FragmentPurchasedBinding? = null
     private val purchasedViewModel: PurchasedViewModel by viewModels()
     private lateinit var purchasedAdapter: PurchasedAdapter
+
+    @Inject
+    lateinit var userId: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,16 +37,18 @@ class PurchasedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecycler()
         initObserve()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        purchasedBinding?.bvArrowBack?.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun initObserve() {
-        val sharedPref = activity?.getSharedPreferences(
-            "getSharedPref", Context.MODE_PRIVATE
-        )
-        sharedPref?.getString(Constant.SHARED_PREF_KEY, null)
-            ?.let { userId ->
-                purchasedViewModel.handleEvent(PurchasedUiEvent.GetPurchasedProducts(userId))
-            }
+        purchasedViewModel.handleEvent(PurchasedUiEvent.GetPurchasedProducts(userId))
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 purchasedViewModel._uiState.collect { state ->

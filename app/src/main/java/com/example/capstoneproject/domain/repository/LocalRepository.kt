@@ -24,5 +24,4 @@ interface LocalRepository {
     suspend fun deleteBasketProduct(basketItem: Basket)
     suspend fun deleteFavoritesProduct(favorites: Favorites)
     suspend fun deleteCollectionProduct(collection: Collection)
-
 }

@@ -2,12 +2,14 @@ package com.example.capstoneproject.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.capstoneproject.common.extensions.Resource
-import com.example.capstoneproject.data.model.product.Favorites
-import com.example.capstoneproject.domain.usecase.local.GetLastUserFromDatabaseUseCase
-import com.example.capstoneproject.domain.usecase.local.InsertProductToFavoritesUseCase
-import com.example.capstoneproject.domain.usecase.remote.GetAllCategoriesUseCase
-import com.example.capstoneproject.domain.usecase.remote.GetAllProductsUseCase
+import com.example.capstoneproject.common.Resource
+import com.example.capstoneproject.data.entities.product.Collection
+import com.example.capstoneproject.data.entities.product.Favorites
+import com.example.capstoneproject.domain.usecase.local.product.GetBasketItemsCountUseCase
+import com.example.capstoneproject.domain.usecase.local.product.InsertProductToCollectionsUseCase
+import com.example.capstoneproject.domain.usecase.local.product.InsertProductToFavoritesUseCase
+import com.example.capstoneproject.domain.usecase.remote.product.GetAllProductsByNameUseCase
+import com.example.capstoneproject.domain.usecase.remote.product.GetProductsByCategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -15,10 +17,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getAllCategoriesUseCase: GetAllCategoriesUseCase,
-    private val getAllProductsUseCase: GetAllProductsUseCase,
-    private val getLastUserFromDatabaseUseCase: GetLastUserFromDatabaseUseCase,
-    private val insertProductToFavoritesUseCase: InsertProductToFavoritesUseCase
+    private val insertProductToFavoritesUseCase: InsertProductToFavoritesUseCase,
+    private val insertProductToCollectionsUseCase: InsertProductToCollectionsUseCase,
+    private val getAllProductsFromUseCase: GetAllProductsByNameUseCase,
+    private val getProductsByCategoriesUseCase: GetProductsByCategoriesUseCase,
+    private val getBasketItemsCountUseCase: GetBasketItemsCountUseCase
+
 ) :
     ViewModel() {
 
@@ -27,17 +31,62 @@ class HomeViewModel @Inject constructor(
 
     fun handleEvent(uiEvent: HomeUiEvent) {
         when (uiEvent) {
-            is HomeUiEvent.GetAllCategories -> {
-                getAllCategories()
-            }
             is HomeUiEvent.GetAllProducts -> {
-                getAllProducts()
-            }
-            is HomeUiEvent.GetLastUser -> {
-                getLastUser()
+                getAllProductsByName()
             }
             is HomeUiEvent.InsertProductToFavorite -> {
                 insertProductToFavorite(uiEvent.favorite)
+            }
+            is HomeUiEvent.InsertProductToCollections -> {
+                insertProductToCollections(uiEvent.collection)
+            }
+            is HomeUiEvent.GetDiscountProducts -> {
+                getProductsByCategories(uiEvent.categoryName)
+            }
+            is HomeUiEvent.GetBasketItemsCount -> {
+                getBasketItemsCount(uiEvent.userId)
+            }
+        }
+    }
+
+    private fun getBasketItemsCount(userId: String) {
+        viewModelScope.launch {
+            getBasketItemsCountUseCase.invoke(userId).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
+                            state.copy(basketItemsCount = resultState.data)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getProductsByCategories(categoryName: String) {
+        viewModelScope.launch {
+            getProductsByCategoriesUseCase.invoke(categoryName).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
+                            state.copy(discountProducts = resultState.data)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun insertProductToCollections(collection: Collection) {
+        viewModelScope.launch {
+            insertProductToCollectionsUseCase.invoke(collection).collect { resultState ->
+                when (resultState) {
+                    is Resource.Error -> {
+                        uiState.update { state ->
+                            state.copy(error = resultState.message)
+                        }
+                    }
+                }
             }
         }
     }
@@ -56,41 +105,13 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getLastUser() {
+    private fun getAllProductsByName() {
         viewModelScope.launch {
-            getLastUserFromDatabaseUseCase.invoke().collect { resultState ->
+            getAllProductsFromUseCase.invoke().collect { resultState ->
                 when (resultState) {
                     is Resource.Success -> {
                         uiState.update { state ->
-                            state.copy(currentUser = resultState.data)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun getAllProducts() {
-        viewModelScope.launch {
-            getAllProductsUseCase.invoke().collect { resultState ->
-                when (resultState) {
-                    is Resource.Success -> {
-                        uiState.update { state ->
-                            state.copy(products = resultState.data)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun getAllCategories() {
-        viewModelScope.launch {
-            getAllCategoriesUseCase.invoke().collect { resultState ->
-                when (resultState) {
-                    is Resource.Success -> {
-                        uiState.update { state ->
-                            state.copy(categories = resultState.data)
+                            state.copy(allProducts = resultState.data)
                         }
                     }
                 }

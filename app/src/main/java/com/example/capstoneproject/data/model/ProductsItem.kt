@@ -13,7 +13,6 @@ data class ProductsItem(
     val rate: String,
     val count: String,
 )
-
 fun ProductsItem.toProduct() = Product(
     productTitle = title,
     productDescription = description,

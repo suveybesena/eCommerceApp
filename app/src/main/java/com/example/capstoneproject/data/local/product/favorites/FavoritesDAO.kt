@@ -2,7 +2,7 @@ package com.example.capstoneproject.data.local.product.favorites
 
 import androidx.room.*
 import com.example.capstoneproject.common.Constant
-import com.example.capstoneproject.data.model.product.Favorites
+import com.example.capstoneproject.data.entities.product.Favorites
 import kotlinx.coroutines.flow.Flow
 
 @Dao

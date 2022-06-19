@@ -45,7 +45,6 @@ class BasketFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObserver()
-
     }
 
     private fun initObserver() {
@@ -56,7 +55,6 @@ class BasketFragment() : Fragment() {
         request = PeriodicWorkRequestBuilder<RunWorker>(1, TimeUnit.MINUTES)
             .setConstraints(workCondition)
             .build()
-
 
         basketViewModel.handleEvent(BasketUiEvent.GetAllBasketItems(userId))
         basketViewModel.handleEvent(BasketUiEvent.GetBasketItemCount(userId))
@@ -78,7 +76,6 @@ class BasketFragment() : Fragment() {
                                             start = (start + it)
                                             tvShoppingSubTotal.text = "$${start.toInt()}"
                                         }
-
                                         bvProceedToCheckout.setOnClickListener {
                                             cancelReminder(request)
                                             basketItems.forEach { purchasedItem ->

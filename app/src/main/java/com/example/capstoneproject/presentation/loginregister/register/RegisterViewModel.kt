@@ -2,11 +2,10 @@ package com.example.capstoneproject.presentation.loginregister.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.capstoneproject.common.extensions.Resource
-import com.example.capstoneproject.data.model.user.User
-import com.example.capstoneproject.data.model.user.UserItem
-import com.example.capstoneproject.domain.usecase.local.InsertUserToDatabaseUseCase
-import com.example.capstoneproject.domain.usecase.remote.SingUpUseCase
+import com.example.capstoneproject.common.Resource
+import com.example.capstoneproject.data.entities.user.User
+import com.example.capstoneproject.domain.usecase.local.user.InsertUserToDatabaseUseCase
+import com.example.capstoneproject.domain.usecase.remote.user.SignUpWithAPIUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -14,8 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val singUpUseCase: SingUpUseCase,
-    private val insertUserToDatabaseUseCase: InsertUserToDatabaseUseCase
+    private val insertUserToDatabaseUseCase: InsertUserToDatabaseUseCase,
+    private val signUpWithAPIUseCase: SignUpWithAPIUseCase
 ) :
     ViewModel() {
 
@@ -24,13 +23,40 @@ class RegisterViewModel @Inject constructor(
 
     fun handleEvent(uiEvent: RegisterUiEvent) {
         when (uiEvent) {
-            is RegisterUiEvent.SignUp -> {
-                singUp(uiEvent.userItem)
-            }
             is RegisterUiEvent.InsertUserToDb -> {
                 insertUserToDb(uiEvent.user)
             }
+            is RegisterUiEvent.SignUp -> {
+                signUp(
+                    uiEvent.email,
+                    uiEvent.password,
+                    uiEvent.name,
+                    uiEvent.phone,
+                    uiEvent.address
+                )
+            }
 
+        }
+    }
+
+    private fun signUp(
+        email: String,
+        password: String,
+        name: String,
+        phone: String,
+        address: String
+    ) {
+        viewModelScope.launch {
+            signUpWithAPIUseCase.invoke(email, password, name, phone, address)
+                .collect { resultState ->
+                    when (resultState) {
+                        is Resource.Success -> {
+                            uiState.update { state ->
+                                state.copy(response = resultState.data)
+                            }
+                        }
+                    }
+                }
         }
     }
 
@@ -40,26 +66,7 @@ class RegisterViewModel @Inject constructor(
                 when (resultState) {
                     is Resource.Error -> {
                         uiState.update { state ->
-                            state.copy(error = resultState.message)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun singUp(userItem: UserItem) {
-        viewModelScope.launch {
-            singUpUseCase.invoke(userItem).collect { resultState ->
-                when (resultState) {
-                    is Resource.Error -> {
-                        uiState.update { state ->
-                            state.copy(error = resultState.message)
-                        }
-                    }
-                    is Resource.Loading -> {
-                        uiState.update { state ->
-                            state.copy(isLoading = true)
+                            state.copy(dbError = resultState.message)
                         }
                     }
                 }

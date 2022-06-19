@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class GetFavoritesItemsCountUseCase @Inject constructor(
+class GetBasketItemsCountUseCase @Inject constructor(
     private val localRepository: LocalRepository,
     @IoDispatcher
     private val ioDispatcher: CoroutineDispatcher
@@ -21,9 +21,9 @@ class GetFavoritesItemsCountUseCase @Inject constructor(
     suspend fun invoke(userId: String) = channelFlow {
         send(Resource.Loading)
         try {
-            val favoritesCount = localRepository.getFavoritesProducts(userId)
+            val collectionsCount = localRepository.getBasketProducts(userId)
             CoroutineScope(currentCoroutineContext()).launch {
-                favoritesCount.collect { list ->
+                collectionsCount.collect { list ->
                     send(Resource.Success(list.size))
                 }
             }

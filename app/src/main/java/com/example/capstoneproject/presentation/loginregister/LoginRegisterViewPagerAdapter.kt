@@ -14,8 +14,8 @@ class LoginRegisterViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(f
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> RegisterFragment()
-            1 -> LoginFragment()
+            0 -> LoginFragment()
+            1 -> RegisterFragment()
             else -> {
                 RegisterFragment()
             }

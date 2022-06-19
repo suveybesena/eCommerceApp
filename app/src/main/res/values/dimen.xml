@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="layout_padding">25dp</dimen>
     <dimen name="layout_margin">15dp</dimen>
     <dimen name="layout_top_margin">15dp</dimen>
     <dimen name="price_layout_margin">30dp</dimen>
@@ -51,6 +52,7 @@
     <dimen name="my_collection_recyler_height">400dp</dimen>
     <dimen name="item_margin_top">5dp</dimen>
     <dimen name="text_size_biggest">20sp</dimen>
+    <dimen name="product_item_height">290dp</dimen>
 
     <dimen name="margin_medium">4dp</dimen>
     <dimen name="card_corner_radius_medium">5dp</dimen>

@@ -53,7 +53,6 @@ class LocalRepositoryImpl @Inject constructor(
         collectionsDAO.deleteProduct(collection)
     }
 
-
     override suspend fun insertProductToFavorites(favorites: Favorites) {
         favoritesDAO.insertProduct(favorites)
     }

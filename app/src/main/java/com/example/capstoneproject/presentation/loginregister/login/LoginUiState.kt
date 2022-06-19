@@ -1,8 +1,9 @@
 package com.example.capstoneproject.presentation.loginregister.login
 
-import com.example.capstoneproject.data.model.user.UserItem
+import com.example.capstoneproject.data.entities.user.User
+import com.example.capstoneproject.data.entities.user.UserItem
 
 data class LoginUiState(
-    val token: Map<String, String>? = null,
+    val userLogin: User? = null,
     val users: List<UserItem>? = null
 )

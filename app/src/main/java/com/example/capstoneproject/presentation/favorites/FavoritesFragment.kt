@@ -7,15 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.capstoneproject.databinding.FragmentFavoritesBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
     private var favoritesBinding: FragmentFavoritesBinding? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

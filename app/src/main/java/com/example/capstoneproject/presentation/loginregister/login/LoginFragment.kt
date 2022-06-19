@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import com.example.capstoneproject.R
+import com.example.capstoneproject.common.Constant.FAILED_LOGIN
+import com.example.capstoneproject.common.Constant.SUCCESS_LOGIN
 import com.example.capstoneproject.databinding.FragmentLoginBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -30,19 +33,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
-        initObserve()
-    }
-
-    private fun initObserve() {
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                loginViewModel._uiState.collect { state ->
-                    state.users.let { userList ->
-                           // println(userList)
-                    }
-                }
-            }
-        }
     }
 
     private fun initListeners() {
@@ -53,12 +43,24 @@ class LoginFragment : Fragment() {
                 loginViewModel.handleEvent(LoginUiEvent.SignIn(userName, userPassword))
                 lifecycleScope.launch {
                     loginViewModel._uiState.collect { state ->
-                        state.token.let {
-                            //println(it?.keys)
+                        state.userLogin.let { user ->
+                            if (user != null) {
+                                Snackbar.make(
+                                    requireView(),
+                                    SUCCESS_LOGIN,
+                                    Snackbar.LENGTH_LONG
+                                ).show()
+                                findNavController().navigate(R.id.homeFragment)
+                            } else {
+                                Snackbar.make(
+                                    requireView(),
+                                    FAILED_LOGIN,
+                                    Snackbar.LENGTH_LONG
+                                ).show()
+                            }
                         }
                     }
                 }
-                loginViewModel.handleEvent(LoginUiEvent.GetAllUsers)
             }
         }
     }

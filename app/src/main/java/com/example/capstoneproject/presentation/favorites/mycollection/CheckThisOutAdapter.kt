@@ -2,30 +2,30 @@ package com.example.capstoneproject.presentation.favorites.mycollection
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.common.extensions.downloadImage
+import com.example.capstoneproject.data.entities.product.Product
 import com.example.capstoneproject.databinding.ItemCheckThisOutBinding
-import com.example.capstoneproject.domain.model.Item
+import com.example.capstoneproject.presentation.home.OnProductListClickHandler
 
 
-class CheckThisOutAdapter : RecyclerView.Adapter<CheckThisOutAdapter.ItemVH>() {
+class CheckThisOutAdapter(private val onProductListClickHandler: OnProductListClickHandler) :
+    RecyclerView.Adapter<CheckThisOutAdapter.ItemVH>() {
     class ItemVH(val binding: ItemCheckThisOutBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private val differCallBack = object : DiffUtil.ItemCallback<Item>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return true
         }
 
         override fun areContentsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return true
         }
@@ -40,14 +40,15 @@ class CheckThisOutAdapter : RecyclerView.Adapter<CheckThisOutAdapter.ItemVH>() {
     }
 
     override fun onBindViewHolder(holder: ItemVH, position: Int) {
-        val list = differ.currentList[position]
+        val product = differ.currentList[position]
         holder.binding.apply {
-            list.productImage.let { image ->
+            product.productImage?.let { image ->
                 ivProduct.downloadImage(image)
             }
-            tvProductDesc.text = list.productDesc
-            tvProductName.text = list.productName
-            tvProductPrice.text = list.productPrice
+            //tvProductName.text = product.productTitle
+        }
+        holder.itemView.setOnClickListener {
+            onProductListClickHandler.goDetailPage(product)
         }
     }
 

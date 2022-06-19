@@ -1,31 +1,41 @@
 package com.example.capstoneproject
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.ui.NavigationUI
+import com.example.capstoneproject.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        installSplashScreen()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        this.supportActionBar?.hide()
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController: NavController = navHostFragment.navController
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.homeFragment, R.id.favoritesFragment, R.id.shoppingFragment, R.id.profileFragment
-            )
+        NavigationUI.setupWithNavController(
+            binding.bottomNavigationView,
+            navHostFragment.navController
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.loginRegisterFragment) {
+                binding.bottomNavigationView.visibility = View.GONE
+            } else if (destination.id == R.id.splashFragment) {
+                binding.bottomNavigationView.visibility = View.GONE
+            } else {
+                binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+        }
     }
 }

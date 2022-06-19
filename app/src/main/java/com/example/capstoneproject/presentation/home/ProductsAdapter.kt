@@ -9,23 +9,28 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.R
 import com.example.capstoneproject.common.extensions.downloadImage
+import com.example.capstoneproject.data.entities.product.Product
 import com.example.capstoneproject.databinding.ItemProductBinding
-import com.example.capstoneproject.domain.model.Item
 
-class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ItemVH>() {
+class ProductsAdapter(
+    private val onProductListClickHandler: OnProductListClickHandler,
+    private val onProductListToFavoritesClickHandler: OnProductListToFavoritesClickHandler,
+    private val onProductListToCollectionsClickHandler: OnProductListToCollectionsClickHandler
+) :
+    RecyclerView.Adapter<ProductsAdapter.ItemVH>() {
     class ItemVH(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private val differCallBack = object : DiffUtil.ItemCallback<Item>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return true
         }
 
         override fun areContentsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return true
         }
@@ -64,14 +69,16 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ItemVH>() {
             )
         }
 
-        val list = differ.currentList[position]
+        val product = differ.currentList[position]
         holder.binding.apply {
-            list.productImage.let { image ->
-                ivProduct.downloadImage(image)
+            product.productImage.let { image ->
+                if (image != null) {
+                    ivProduct.downloadImage(image)
+                }
             }
-            tvProductDesc.text = list.productDesc
-            tvProductName.text = list.productName
-            tvProductPrice.text = list.productPrice
+            tvProductDesc.text = product.productDescription
+            tvProductName.text = product.productTitle
+            tvProductPrice.text = "$${product.productPrice}"
             val clicked = false
             bvAdd.setOnClickListener {
                 if (!clicked) {
@@ -83,6 +90,17 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ItemVH>() {
                     bvFavItem.startAnimation(toBottom)
                     bvCollectionItem.startAnimation(toBottom)
                 }
+            }
+
+            holder.itemView.setOnClickListener {
+                onProductListClickHandler.goDetailPage(product)
+            }
+            bvFavItem.setOnClickListener {
+                onProductListToFavoritesClickHandler.addFavorites(product)
+            }
+
+            bvCollectionItem.setOnClickListener {
+                onProductListToCollectionsClickHandler.addCollections(product)
             }
         }
     }

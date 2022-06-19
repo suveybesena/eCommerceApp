@@ -22,5 +22,4 @@ object SharedPreferencesModule {
     @Singleton
     fun provideUserId(sharedPreferences: SharedPreferences): String =
         sharedPreferences.getString(Constant.SHARED_PREF_KEY, null).toString()
-
 }

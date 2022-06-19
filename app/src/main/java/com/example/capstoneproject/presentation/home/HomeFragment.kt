@@ -1,6 +1,5 @@
 package com.example.capstoneproject.presentation.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,26 +13,29 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.capstoneproject.R
-import com.example.capstoneproject.common.extensions.Constant
-import com.example.capstoneproject.common.extensions.Constant.SHARED_PREF_KEY
-import com.example.capstoneproject.data.model.product.Favorites
-import com.example.capstoneproject.data.model.product.Product
+import com.example.capstoneproject.common.Constant
+import com.example.capstoneproject.data.entities.product.Collection
+import com.example.capstoneproject.data.entities.product.Favorites
+import com.example.capstoneproject.data.entities.product.Product
+import com.example.capstoneproject.data.model.Category
 import com.example.capstoneproject.databinding.FragmentHomeBinding
-import com.example.capstoneproject.domain.model.Item
-import com.mig35.carousellayoutmanager.CarouselLayoutManager
-import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener
-import com.mig35.carousellayoutmanager.CenterScrollListener
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment() : Fragment() {
     private var homeBinding: FragmentHomeBinding? = null
     private val homeViewModel: HomeViewModel by viewModels()
     lateinit var productsAdapter: ProductsAdapter
     lateinit var categoriesAdapter: CategoriesAdapter
     lateinit var campaignsAdapter: CampaignsAdapter
+    lateinit var searchAdapter: SearchAdapter
+
+    @Inject
+    lateinit var userId: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,10 +49,27 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObserve()
-        // initListeners()
+        initListeners()
     }
 
     private fun initListeners() {
+        homeBinding?.apply {
+            //etSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            //    override fun onQueryTextSubmit(query: String?): Boolean {
+            //        searchAdapter.filter.filter(query)
+            //        return true
+            //    }
+
+            //    override fun onQueryTextChange(newText: String?): Boolean {
+            //        homeBinding?.apply {
+            //            rvSearch.visibility = View.VISIBLE
+            //            layout.visibility = View.INVISIBLE
+            //        }
+            //        searchAdapter.filter.filter(newText)
+            //        return true
+            //    }
+            //})
+        }
     }
 
     private fun goCategoriesFragment(categoryName: String) {
@@ -63,9 +82,9 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun goDetailFragment(product: Product) {
+    private fun goDetailFragment(productModel: Product) {
         val bundle = Bundle().apply {
-            putParcelable(Constant.PARCELABLE_ARGS_ID, product)
+            putParcelable(Constant.PARCELABLE_ARGS_ID, productModel)
         }
         findNavController().navigate(
             R.id.action_homeFragment_to_detailFragment,
@@ -73,93 +92,123 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun addFavoritesToDb(product: Product) {
-        val sharedPref = activity?.getSharedPreferences(
-            "getSharedPref", Context.MODE_PRIVATE
-        )
-        val pref = sharedPref?.getString(SHARED_PREF_KEY, null)
-        val favoriteProduct = Favorites(product.title, pref, product.price, product.image)
+    private fun addFavoritesToDb(productModel: Product) {
+        val favoriteProduct =
+            Favorites(
+                productModel.productTitle,
+                userId,
+                productModel.productPrice,
+                productModel.productImage
+            )
         homeViewModel.handleEvent(HomeUiEvent.InsertProductToFavorite(favoriteProduct))
+        Snackbar.make(requireView(), Constant.INSERT_PRODUCT_FAVORITES, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun addCollectionsToDb(productModel: Product) {
+        val collectionProduct =
+            Collection(
+                productModel.productTitle,
+                userId,
+                productModel.productPrice,
+                productModel.productImage
+            )
+        homeViewModel.handleEvent(HomeUiEvent.InsertProductToCollections(collectionProduct))
+        Snackbar.make(requireView(), Constant.INSERT_PRODUCT_COLLECTIONS, Snackbar.LENGTH_LONG)
+            .show()
     }
 
     private fun initObserve() {
-        homeViewModel.handleEvent(HomeUiEvent.GetAllCategories)
+        val discount = "Discount"
+        homeViewModel.handleEvent(HomeUiEvent.GetDiscountProducts(discount))
         homeViewModel.handleEvent(HomeUiEvent.GetAllProducts)
-        homeViewModel.handleEvent(HomeUiEvent.GetLastUser)
+        homeViewModel.handleEvent(HomeUiEvent.GetBasketItemsCount(userId))
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel._uiState.collect { state ->
-                    state.categories.let { categories ->
-                        categoriesAdapter.differ.submitList(categories)
+                    state.discountProducts.let { newProducts ->
+                        campaignsAdapter.differ.submitList(newProducts)
                     }
-                    state.products.let { product ->
-                        productsAdapter.differ.submitList(product)
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                homeViewModel._uiState.collect { state ->
+                    state.allProducts.let { allProducts ->
+                        productsAdapter.differ.submitList(allProducts)
+                        searchAdapter.differ.submitList(allProducts)
                     }
-                    state.currentUser?.let { flowList ->
-                        flowList.collect { userList ->
-                            val currentUserId = userList.lastIndex.toString()
-                            val sharedPref =
-                                activity?.getSharedPreferences(
-                                    "getSharedPref",
-                                    Context.MODE_PRIVATE
-                                )
-                            with(sharedPref?.edit()) {
-                                this?.putString(SHARED_PREF_KEY, currentUserId)
-                                this?.apply()
-                            }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                homeViewModel._uiState.collect { state ->
+                    state.basketItemsCount.let { count ->
+                        homeBinding?.apply {
+                            tvBasketItemCount.text = count.toString()
                         }
                     }
                 }
             }
         }
 
-
-        val item1 = Item(
-            "ürün1fghfh",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Cosmetics-beauty-products-for-makeup-on-transparent-background-PNG.png",
-            "ürünfghfghfhfghfhgfgh"
+        val categoryList = arrayListOf<Category>()
+        val electronic = Category(
+            "Electronic",
+            R.drawable.electronic
+        )
+        val blues = Category(
+            "Blues",
+            R.drawable.blues
+        )
+        val pop = Category(
+            "Pop",
+            R.drawable.pop
+        )
+        val classical = Category(
+            "Classical",
+            R.drawable.classical
+        )
+        val funk = Category(
+            "Funk",
+            R.drawable.funk
+        )
+        val rock = Category(
+            "Rock",
+            R.drawable.rock
+        )
+        val jazz = Category(
+            "Jazz",
+            R.drawable.jazz
         )
 
-        val item2 = Item(
-            "ürün2",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Cosmetics-beauty-products-for-makeup-on-transparent-background-PNG.png",
-            "ürün"
-        )
-
-        val item3 = Item(
-            "ürün3",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Cosmetics-beauty-products-for-makeup-on-transparent-background-PNG.png",
-            "ürün"
-        )
-
-        val item4 = Item(
-            "ürün4",
-            "25",
-            "https://image.similarpng.com/very-thumbnail/2021/12/Collection-of-make-up-products-on-transparent-background-PNG.png",
-            "ürün"
-        )
-
-        val list = arrayListOf<Item>()
-        list.add(item1)
-        list.add(item2)
-        list.add(item3)
-        list.add(item4)
-
-        campaignsAdapter.differ.submitList(list)
+        categoryList.add(electronic)
+        categoryList.add(pop)
+        categoryList.add(funk)
+        categoryList.add(classical)
+        categoryList.add(rock)
+        categoryList.add(blues)
+        categoryList.add(jazz)
+        categoriesAdapter.differ.submitList(categoryList)
     }
 
     private fun initRecyclerView() {
         productsAdapter = ProductsAdapter(object : OnProductListClickHandler {
-            override fun goDetailPage(product: Product) {
-                goDetailFragment(product)
+            override fun goDetailPage(productModel: Product) {
+                goDetailFragment(productModel)
             }
 
         }, object : OnProductListToFavoritesClickHandler {
-            override fun addFavorites(product: Product) {
-                addFavoritesToDb(product)
+            override fun addFavorites(productModel: Product) {
+                addFavoritesToDb(productModel)
+            }
+
+        }, object : OnProductListToCollectionsClickHandler {
+            override fun addCollections(productModel: Product) {
+                addCollectionsToDb(productModel)
             }
 
         })
@@ -167,29 +216,48 @@ class HomeFragment : Fragment() {
             rvItem.adapter = productsAdapter
             rvItem.layoutManager = GridLayoutManager(requireContext(), 2)
         }
-
-        val layoutManagerHorizontal = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL)
-        layoutManagerHorizontal.setPostLayoutListener(CarouselZoomPostLayoutListener())
         categoriesAdapter = CategoriesAdapter(object : OnCategoryListClickHandler {
             override fun goCategoryPage(categoryName: String) {
                 goCategoriesFragment(categoryName)
             }
-
         })
-        homeBinding?.rvCategories?.adapter = categoriesAdapter
-        homeBinding?.rvCategories?.layoutManager = layoutManagerHorizontal
-        homeBinding?.rvCategories?.setHasFixedSize(true)
-        homeBinding?.rvCategories?.addOnScrollListener(CenterScrollListener())
+        homeBinding?.rvCategories?.apply {
+            adapter = categoriesAdapter
+            set3DItem(true)
+            setAlpha(true)
+            setPadding(10, 0, 10, 0)
+        }
 
-        campaignsAdapter = CampaignsAdapter()
+        campaignsAdapter = CampaignsAdapter(object : OnProductListClickHandler {
+            override fun goDetailPage(productModel: Product) {
+                goDetailFragment(productModel)
+            }
+        })
         homeBinding?.apply {
             rvCampaigns.adapter = campaignsAdapter
             rvCampaigns.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
-    }
+        searchAdapter = SearchAdapter(object : OnProductListClickHandler {
+            override fun goDetailPage(productModel: Product) {
+                goDetailFragment(productModel)
+            }
+        }, object : OnProductListToFavoritesClickHandler {
+            override fun addFavorites(productModel: Product) {
+                addFavoritesToDb(productModel)
+            }
+        }, object : OnProductListToCollectionsClickHandler {
+            override fun addCollections(productModel: Product) {
+                addCollectionsToDb(productModel)
+            }
 
+        })
+        homeBinding?.apply {
+            rvSearch.adapter = searchAdapter
+            rvSearch.layoutManager = GridLayoutManager(requireContext(), 2)
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()

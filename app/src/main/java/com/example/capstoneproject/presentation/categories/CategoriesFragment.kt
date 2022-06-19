@@ -28,6 +28,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CategoriesFragment : Fragment() {
@@ -35,6 +36,9 @@ class CategoriesFragment : Fragment() {
     lateinit var categoriesResultAdapter: CategoriesResultAdapter
     private val args: CategoriesFragmentArgs by navArgs()
     private val categoriesViewModel: CategoriesViewModel by viewModels()
+
+    @Inject
+    lateinit var userId: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,10 +102,6 @@ class CategoriesFragment : Fragment() {
     }
 
     private fun addFavorite(product: Product) {
-        val sharedPref = activity?.getSharedPreferences(
-            "getSharedPref", Context.MODE_PRIVATE
-        )
-        val userId = sharedPref?.getString(Constant.SHARED_PREF_KEY, null)
         val favoriteProduct =
             Favorites(
                 product.productTitle,

@@ -1,4 +1,4 @@
-package com.example.capstoneproject.domain.model
+package com.example.capstoneproject.data.model
 
 data class Category(
     var categoryName: String,

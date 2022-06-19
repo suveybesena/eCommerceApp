@@ -21,8 +21,6 @@ object Constant {
     const val LOCAL_DB_PRODUCT_CURRENT_USER_UD = "currentUserId"
     const val LOCAL_DB_PRODUCT_ID = "id"
 
-
-
     const val LOCAL_DB_USER_USERNAME = "username"
     const val LOCAL_DB_USER_ADDRESS = "address"
     const val LOCAL_DB_CURRENTUSER_ID = "currentuser"
@@ -30,7 +28,6 @@ object Constant {
     const val LOCAL_DB_USER_PASSWORD = "password"
     const val LOCAL_DB_USER_PHONE = "phone"
     const val LOCAL_DB_USER_ID = "id"
-
 
     const val BASE_URL = "https://canerture.com/api/ecommerce/"
 
@@ -40,23 +37,21 @@ object Constant {
     const val ALL_PRODUCTS_IN_CATEGORY_ENDPOINT = "get_products_by_user_and_category.php"
     const val ALL_SALE_PRODUCTS_ENDPOINT = "get_sale_products.php"
 
-
     const val ALL_PRODUCTS_ENDPOINT = "get_products.php"
     const val ADD_PRODUCTS_TO_BAG_ENDPOINT = "add_to_bag.php"
     const val ALL_ORDERS_OF_USER_ENDPOINT = "carts/user/{user_id}"
-
 
     const val STRING_ARGS_ID = "category"
     const val PARCELABLE_ARGS_ID = "detail"
 
     const val SUCCESS_REGISTER = "Successfully registered."
-    const val SUCCESS_LOGIN ="Successfully logged in."
+    const val SUCCESS_LOGIN = "Successfully logged in."
     const val SUCCESS_ADDED_CART = "The product added to the cart."
-    const val FAILED_LOGIN= "Login failed."
+    const val FAILED_LOGIN = "Login failed."
     const val INSERT_PRODUCT_COLLECTIONS = "The product added to collections."
     const val INSERT_PRODUCT_FAVORITES = "The product added to favourites."
 
-    const val CHANNEL_ID= "channelId"
+    const val CHANNEL_ID = "channelId"
     const val CHANNEL_NAME = "channelName"
     const val CHANNEL_INTRO = "channelIntroduction"
     const val BASKET_REMINDER_TITLE = "You forgot an item in your cart."

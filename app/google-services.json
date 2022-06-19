@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402754396195",
+    "project_id": "upschool-capstone-projec-15cf0",
+    "storage_bucket": "upschool-capstone-projec-15cf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402754396195:android:b347bb8e043ab7ddd05196",
+        "android_client_info": {
+          "package_name": "com.example.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402754396195-3f1huoirsqg6uit6fhr1rbmrk1o393u9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP75RSinfUV0DSLh23FQIWP9XWyIsfCXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402754396195-3f1huoirsqg6uit6fhr1rbmrk1o393u9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

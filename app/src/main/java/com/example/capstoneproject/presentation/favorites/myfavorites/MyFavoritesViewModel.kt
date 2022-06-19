@@ -2,8 +2,10 @@ package com.example.capstoneproject.presentation.favorites.myfavorites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.capstoneproject.common.extensions.Resource
-import com.example.capstoneproject.domain.usecase.local.GetFavoritesProductsFromDatabaseUseCase
+import com.example.capstoneproject.common.Resource
+import com.example.capstoneproject.data.entities.product.Favorites
+import com.example.capstoneproject.domain.usecase.local.product.DeleteFavoriteProductUseCase
+import com.example.capstoneproject.domain.usecase.local.product.GetFavoritesProductsFromDatabaseUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -11,7 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyFavoritesViewModel @Inject constructor(
-    private val getFavoritesProductsFromDatabaseUseCase: GetFavoritesProductsFromDatabaseUseCase
+    private val getFavoritesProductsFromDatabaseUseCase: GetFavoritesProductsFromDatabaseUseCase,
+    private val deleteFavoriteProductUseCase: DeleteFavoriteProductUseCase
 ) : ViewModel() {
 
     private val uiState = MutableStateFlow(MyFavoritesUiState())
@@ -21,6 +24,23 @@ class MyFavoritesViewModel @Inject constructor(
         when (event) {
             is MyFavoritesUiEvent.GetAllFavorites -> {
                 getAllFavorites(event.userId)
+            }
+            is MyFavoritesUiEvent.DeleteProduct -> {
+                deleteProduct(event.favorites)
+            }
+        }
+    }
+
+    private fun deleteProduct(favorites: Favorites) {
+        viewModelScope.launch {
+            deleteFavoriteProductUseCase.invoke(favorites).collect { resultState ->
+                when (resultState) {
+                    is Resource.Error -> {
+                        uiState.update { state ->
+                            state.copy(error = resultState.message)
+                        }
+                    }
+                }
             }
         }
     }

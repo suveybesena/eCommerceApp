@@ -6,23 +6,24 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.common.extensions.downloadImage
+import com.example.capstoneproject.data.entities.product.Favorites
 import com.example.capstoneproject.databinding.ItemMyFavoritesBinding
-import com.example.capstoneproject.domain.model.Item
 
-class MyFavoritesAdapter : RecyclerView.Adapter<MyFavoritesAdapter.FavoritesVH>() {
+class MyFavoritesAdapter(private val onFavoritesListToDeleteClickHandler: OnFavoritesListToDeleteClickHandler) :
+    RecyclerView.Adapter<MyFavoritesAdapter.FavoritesVH>() {
     class FavoritesVH(val binding: ItemMyFavoritesBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private val differCallBack = object : DiffUtil.ItemCallback<Item>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<Favorites>() {
         override fun areItemsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Favorites,
+            newItem: Favorites
         ): Boolean {
             return true
         }
 
         override fun areContentsTheSame(
-            oldItem: Item,
-            newItem: Item
+            oldItem: Favorites,
+            newItem: Favorites
         ): Boolean {
             return true
         }
@@ -31,19 +32,23 @@ class MyFavoritesAdapter : RecyclerView.Adapter<MyFavoritesAdapter.FavoritesVH>(
     val differ = AsyncListDiffer(this, differCallBack)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesVH {
-        val binding = ItemMyFavoritesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemMyFavoritesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FavoritesVH(binding)
     }
 
     override fun onBindViewHolder(holder: FavoritesVH, position: Int) {
-        val list = differ.currentList[position]
+        val product = differ.currentList[position]
         holder.binding.apply {
-            list.productImage.let { image ->
+            product.productImage?.let { image ->
                 ivProduct.downloadImage(image)
             }
-            tvProductDesc.text = list.productDesc
-            tvProductName.text = list.productName
-            tvProductPrice.text = list.productPrice
+            tvProductName.text = product.productName
+            tvProductPrice.text = "$${product.productPrice}"
+
+            bvFavItem.setOnClickListener {
+                onFavoritesListToDeleteClickHandler.deleteProduct(product)
+            }
         }
     }
 

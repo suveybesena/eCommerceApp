@@ -47,7 +47,6 @@ class MyCollectionsAdapter(private val onCollectionsListToDeleteClickHandler: On
             }
             tvProductName.text = product.productName
             tvProductPrice.text = "$${product.productPrice}"
-
             bvCollectionItem.setOnClickListener {
                 onCollectionsListToDeleteClickHandler.deleteProduct(product)
             }

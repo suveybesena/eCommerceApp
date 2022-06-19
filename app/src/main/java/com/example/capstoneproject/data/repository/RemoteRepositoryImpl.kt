@@ -35,7 +35,6 @@ class RemoteRepositoryImpl @Inject constructor(
             sale_state
         )
 
-
     override suspend fun getProducts(): List<ProductsItem> =
         productAPI.getProducts()
 
@@ -45,10 +44,8 @@ class RemoteRepositoryImpl @Inject constructor(
     ): List<ProductsItem> =
         productAPI.getProductsByCategories(user, categoryName)
 
-
     override suspend fun getSaleProducts(): List<ProductsItem> =
         productAPI.getSaleProducts()
-
 
     override suspend fun getProductsByName(user: String): List<ProductsItem> =
         productAPI.getProductsByName(user)
