@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.favorites.myfavorites.MyFavoritesFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMyFavorites"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:context=".presentation.favorites.myfavorites.MyFavoritesFragment">
+
+
+        <ImageView
+            android:id="@+id/ivEmptyImage"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:src="@drawable/rabbit"
+            app:layout_constraintBottom_toBottomOf="@id/rvMyFavorites"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEmpty"
+            style="@style/empty_list_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/empty_list"
+            app:layout_constraintEnd_toEndOf="@id/ivEmptyImage"
+            app:layout_constraintTop_toBottomOf="@id/ivEmptyImage"
+            app:layout_constraintStart_toStartOf="@id/ivEmptyImage"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMyFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

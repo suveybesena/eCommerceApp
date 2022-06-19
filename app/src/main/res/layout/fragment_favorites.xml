@@ -8,28 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
-        android:padding="@dimen/layout_margin"
+        android:paddingTop="@dimen/layout_margin"
         tools:context=".presentation.favorites.FavoritesFragment">
 
         <TextView
             android:id="@+id/tvWelcome"
             style="@style/title_welcome"
             android:fontFamily="@font/roboto"
+            android:layout_marginStart="5dp"
             android:padding="@dimen/item_padding"
             android:text="@string/favorites"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivUser"
-            android:layout_width="@dimen/user_image_width"
-            android:layout_height="@dimen/user_image_height"
-            android:layout_margin="@dimen/item_margin"
-            android:background="@drawable/bg_user_image"
-            android:contentDescription="@string/user_image"
-            android:src="@drawable/sheldon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -37,7 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background"
             android:minHeight="?actionBarSize"
-            app:layout_constraintTop_toBottomOf="@id/ivUser"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcome"
             app:tabGravity="fill"
             app:tabIndicator="@drawable/bg_indicator"
             app:tabIndicatorAnimationMode="elastic"

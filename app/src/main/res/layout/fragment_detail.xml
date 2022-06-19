@@ -21,6 +21,7 @@
                 android:id="@+id/bvArrowBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/ic_arrow_back"
                 android:contentDescription="@string/arrow_back"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,15 +37,45 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivProduct"
-                android:layout_width="@dimen/product_size"
-                android:layout_height="@dimen/product_size"
-                android:layout_marginTop="@dimen/product_price_margin_top"
-                android:background="@drawable/bg_profile"
-                android:src="@drawable/cream"
+                android:id="@+id/ivCircle"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_circle"
+                app:layout_constraintBottom_toBottomOf="@id/bvCard"
+                app:layout_constraintEnd_toEndOf="@id/bvCard" />
+
+            <TextView
+                android:id="@+id/tvBasketItemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                style="@style/basket_item_count"
+                app:layout_constraintTop_toTopOf="@id/ivCircle"
+                app:layout_constraintStart_toStartOf="@id/ivCircle"
+                app:layout_constraintEnd_toEndOf="@id/ivCircle"
+                app:layout_constraintBottom_toBottomOf="@id/ivCircle" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layoutCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                android:elevation="35dp"
+                app:cardElevation="15dp"
+                app:cardCornerRadius="@dimen/card_corner_radius_small"
+                android:layout_marginTop="@dimen/check_product_image_width"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bvArrowBack" />
+                app:layout_constraintTop_toBottomOf="@id/bvArrowBack">
+
+                <ImageView
+                    android:id="@+id/ivProduct"
+                    android:layout_width="@dimen/product_size"
+                    android:layout_height="@dimen/product_size"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/bg_profile"
+                    android:src="@drawable/cream" />
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -53,14 +84,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_add_card"
-            android:padding="@dimen/price_layout_margin"
+            android:paddingStart="@dimen/price_layout_margin"
+            android:paddingTop="@dimen/price_layout_margin"
+            android:paddingEnd="@dimen/price_layout_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/tvProductName"
-                style="@style/product_name"
+                style="@style/detail_product_name"
                 android:fontFamily="@font/roboto"
                 android:text="@string/product_name"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,26 +112,29 @@
                 style="@style/product_price"
                 android:fontFamily="@font/roboto"
                 android:text="@string/product_price"
+                android:paddingBottom="@dimen/add_card_button_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvProductName" />
 
             <LinearLayout
+                android:id="@+id/layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
-                android:background="@drawable/bg_user_image"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="10dp"
-                app:layout_constraintBottom_toBottomOf="@id/bvAddCard"
-                app:layout_constraintEnd_toStartOf="@id/bvAddCard">
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintEnd_toStartOf="@id/bvAddCard"
+                app:layout_constraintTop_toTopOf="@id/bvAddCard">
 
-                <ImageButton
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/bvMinus"
-                    android:layout_width="@dimen/add_card_button_size"
-                    android:layout_height="@dimen/add_card_button_size"
-                    android:layout_margin="@dimen/add_card_button_margin"
-                    android:background="@drawable/ic_remove" />
+                    style="@style/floating_action_button"
+                    android:src="@drawable/ic_remove"
+                    app:borderWidth="0dp"
+                    app:fabCustomSize="30dp" />
 
                 <TextView
                     android:id="@+id/tvItemCount"
@@ -110,21 +146,26 @@
                     android:textColor="@color/button_text"
                     android:textSize="@dimen/add_card_text_size" />
 
-                <ImageButton
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/bvPlus"
-                    android:layout_width="@dimen/add_card_button_size"
-                    android:layout_height="@dimen/add_card_button_size"
-                    android:layout_margin="@dimen/add_card_button_margin"
-                    android:background="@drawable/ic_add" />
+                    style="@style/floating_action_button"
+                    android:src="@drawable/ic_add"
+                    app:borderWidth="0dp"
+                    app:fabCustomSize="30dp" />
 
             </LinearLayout>
 
-            <Button
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/bvAddCard"
-                style="@style/button"
+                style="@style/extended_fab"
                 android:layout_width="wrap_content"
                 android:fontFamily="@font/roboto"
                 android:text="@string/add_button"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:layout_marginBottom="15dp"
+                android:textColor="@color/white"
+                app:borderWidth="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

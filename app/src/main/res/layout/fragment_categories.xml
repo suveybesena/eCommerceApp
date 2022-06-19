@@ -12,6 +12,7 @@
             android:id="@+id/bvArrowBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="@dimen/layout_top_margin"
             android:background="@drawable/ic_arrow_back"
             android:contentDescription="@string/arrow_back"
@@ -38,14 +39,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/ivCircle"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_circle"
+            app:layout_constraintBottom_toBottomOf="@id/bvCard"
+            app:layout_constraintEnd_toEndOf="@id/bvCard" />
+
+        <TextView
+            android:id="@+id/tvBasketItemCount"
+            style="@style/basket_item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@id/ivCircle"
+            app:layout_constraintEnd_toEndOf="@id/ivCircle"
+            app:layout_constraintStart_toStartOf="@id/ivCircle"
+            app:layout_constraintTop_toTopOf="@id/ivCircle" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvShoppingItems"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:padding="@dimen/item_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bvArrowBack" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

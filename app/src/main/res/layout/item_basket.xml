@@ -28,12 +28,14 @@
                 android:text="@string/product_name"
                 app:layout_constraintBottom_toBottomOf="@id/tvShoppingProductDesc"
                 app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-                app:layout_constraintTop_toTopOf="@id/ivShoppingProduct" />
+                app:layout_constraintTop_toTopOf="@id/ivShoppingProduct"
+                app:layout_constraintEnd_toStartOf="@id/bvDelete"/>
 
             <TextView
                 android:id="@+id/tvShoppingProductDesc"
                 style="@style/product_desc"
                 android:fontFamily="@font/roboto_thin"
+                app:layout_constraintEnd_toStartOf="@id/bvDelete"
                 android:paddingStart="@dimen/shopping_text_padding_start"
                 android:text="@string/product_desc"
                 app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"

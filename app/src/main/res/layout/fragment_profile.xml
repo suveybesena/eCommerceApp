@@ -1,169 +1,342 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bgprofile"
-    tools:context=".presentation.profile.ProfileFragment">
-
-    <ImageButton
-        android:id="@+id/bvCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@drawable/ic_shopping_bag"
-        android:contentDescription="@string/arrow_back"
-        android:padding="@dimen/layout_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivProfile"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/profile"
-        android:background="@drawable/bg_profile"
-        app:layout_constraintBottom_toTopOf="@id/layoutPurchasedItems"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ImageView>
-
-    <LinearLayout
-        android:id="@+id/layoutPurchasedItems"
-        android:layout_width="@dimen/profile_categories"
-        android:layout_height="@dimen/profile_categories"
-        android:layout_margin="@dimen/item_padding"
-        android:background="@drawable/bg_profile"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/profileInfo"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/tvPurchasedItemsTitle"
-            style="@style/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="@string/purchased_items" />
-
-        <TextView
-            android:id="@+id/tvPurchasedItems"
-            style="@style/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="@string/_25" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutFavItems"
-        android:layout_width="@dimen/profile_categories"
-        android:layout_height="@dimen/profile_categories"
-        android:layout_margin="@dimen/item_padding"
-        android:background="@drawable/bg_profile"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/profileInfo"
-        app:layout_constraintStart_toEndOf="@id/layoutPurchasedItems">
-
-        <TextView
-            android:id="@+id/tvFavItemsTitle"
-            style="@style/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="@string/favorites" />
-
-        <TextView
-            android:id="@+id/tvFavItems"
-            style="@style/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="@string/_25" />
-    </LinearLayout>
-
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/profileInfo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_add_card"
-        android:padding="@dimen/price_layout_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/tvUserNameTitle"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto"
-            android:text="@string/user_name"
+        android:layout_height="match_parent"
+        tools:context=".presentation.profile.ProfileFragment">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/layout_margin"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/tvUserName"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto_thin"
-            android:text="@string/user_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserNameTitle" />
+            <TextView
+                style="@style/shopping_text"
+                android:fontFamily="@font/roboto"
+                android:text="Profile"
+                app:layout_constraintBottom_toBottomOf="@id/bvCollectionItem"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bvCollectionItem"
+                style="@style/floating_action_button"
+                android:src="@drawable/ic_signout"
+                app:borderWidth="0dp"
+                android:layout_margin="10dp"
+                app:fabSize="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"  />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tvUserMailTitle"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto"
-            android:text="@string/mail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserName" />
+        <ImageView
+            android:layout_width="@dimen/image_profile"
+            android:layout_height="@dimen/image_profile"
+            android:src="@drawable/surfing"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/tvUserMail"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto_thin"
-            android:text="@string/mail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserMailTitle" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutPurchasedItems"
+            style="@style/profile_card_view_style"
+            android:layout_margin="@dimen/item_margin"
+            app:layout_constraintBottom_toTopOf="@id/profileInfo"
+            app:layout_constraintEnd_toStartOf="@+id/layoutFavItems"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tvUserPhoneTitle"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto"
-            android:text="@string/phone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserMail" />
+            <LinearLayout
+                android:layout_width="@dimen/profile_categories"
+                android:layout_height="@dimen/profile_categories"
+                android:background="@drawable/bg_profile"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvUserPhone"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto_thin"
-            android:text="@string/phone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserPhoneTitle" />
+                <TextView
+                    android:id="@+id/tvPurchasedItemsTitle"
+                    style="@style/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="@string/purchased_items" />
 
-        <TextView
-            android:id="@+id/tvUserBirthdayTitle"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto"
-            android:text="@string/birthday"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserPhone" />
+                <TextView
+                    android:id="@+id/tvPurchasedItemsCount"
+                    style="@style/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="@string/_25" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/tvUserBirthday"
-            style="@style/user_name"
-            android:fontFamily="@font/roboto_thin"
-            android:text="@string/birthday"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUserBirthdayTitle" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutFavItems"
+            style="@style/profile_card_view_style"
+            android:layout_margin="@dimen/item_margin"
+            app:layout_constraintBottom_toTopOf="@id/profileInfo"
+            app:layout_constraintEnd_toStartOf="@+id/layoutCollectionsCount"
+            app:layout_constraintStart_toEndOf="@+id/layoutPurchasedItems">
 
+            <LinearLayout
+                android:layout_width="@dimen/profile_categories"
+                android:layout_height="@dimen/profile_categories"
+                android:background="@drawable/bg_profile"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvFavItemsTitle"
+                    style="@style/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="@string/favorites" />
+
+                <TextView
+                    android:id="@+id/tvFavItemsCount"
+                    style="@style/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="@string/_25" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layoutCollectionsCount"
+            style="@style/profile_card_view_style"
+            android:layout_margin="@dimen/item_margin"
+            app:layout_constraintBottom_toTopOf="@id/profileInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/layoutFavItems">
+
+            <LinearLayout
+                android:layout_width="@dimen/profile_categories"
+                android:layout_height="@dimen/profile_categories"
+                android:background="@drawable/bg_profile"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCollectionsCountTitle"
+                    style="@style/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="@string/collections" />
+
+                <TextView
+                    android:id="@+id/tvCollectionsCount"
+                    style="@style/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="@string/_25" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_add_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tvUserNameTitle"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto_thin"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserNameTitle" />
+
+            <TextView
+                android:id="@+id/tvUserMailTitle"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/mail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserName" />
+
+            <TextView
+                android:id="@+id/tvUserMail"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto_thin"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/mail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserMailTitle" />
+
+            <TextView
+                android:id="@+id/tvUserPhoneTitle"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserMail" />
+
+            <TextView
+                android:id="@+id/tvUserPhone"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto_thin"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserPhoneTitle" />
+
+            <TextView
+                android:id="@+id/tvUserBirthdayTitle"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/birthday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserPhone" />
+
+            <TextView
+                android:id="@+id/tvUserBirthday"
+                style="@style/user_name"
+                android:layout_margin="@dimen/categories_text_padding"
+                android:fontFamily="@font/roboto_thin"
+                android:paddingStart="@dimen/item_padding"
+                android:text="@string/birthday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserBirthdayTitle" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layoutPurchased"
+                style="@style/card_view_style"
+                android:layout_margin="@dimen/item_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserBirthday">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_button_height"
+                    android:layout_margin="@dimen/user_image_stroke">
+
+                    <TextView
+                        android:id="@+id/tvPurchasedProducts"
+                        style="@style/user_name"
+                        android:layout_marginStart="@dimen/item_margin"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/purchased"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_next"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layoutFavorites"
+                style="@style/card_view_style"
+                android:layout_margin="@dimen/item_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutPurchased">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_button_height"
+                    android:layout_margin="@dimen/user_image_stroke">
+
+                    <TextView
+                        android:id="@+id/tvFavoritesProducts"
+                        style="@style/user_name"
+                        android:layout_marginStart="@dimen/item_margin"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/favorites"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_next"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layoutCollections"
+                style="@style/card_view_style"
+                android:layout_marginBottom="25dp"
+                android:layout_marginStart="@dimen/item_padding"
+                android:layout_marginTop="@dimen/item_padding"
+                android:layout_marginEnd="@dimen/item_padding"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutFavorites">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_button_height"
+                    android:layout_margin="@dimen/user_image_stroke"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvCollectionsProducts"
+                        style="@style/user_name"
+                        android:layout_marginStart="@dimen/item_margin"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/collections"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_next"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
