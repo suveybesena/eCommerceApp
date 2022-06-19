@@ -12,6 +12,29 @@ class RemoteRepositoryImpl @Inject constructor(
     private val productAPI: ProductAPI
 
 ) : RemoteRepository {
+    override suspend fun addProductToBag(
+        user: String,
+        title: String,
+        price: Double,
+        description: String,
+        category: String,
+        image: String,
+        rate: Double,
+        count: Int,
+        sale_state: Int
+    ): CRUDResponse =
+        productAPI.addProductToBag(
+            user,
+            title,
+            price,
+            description,
+            category,
+            image,
+            rate,
+            count,
+            sale_state
+        )
+
 
     override suspend fun getProducts(): List<ProductsItem> =
         productAPI.getProducts()
@@ -38,6 +61,4 @@ class RemoteRepositoryImpl @Inject constructor(
         address: String
     ): CRUDResponse =
         userAPI.signUp(email, password, name, phone, address)
-
-
 }
