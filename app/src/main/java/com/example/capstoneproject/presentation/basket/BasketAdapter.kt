@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.common.extensions.downloadImage
-import com.example.capstoneproject.data.model.product.Basket
-import com.example.capstoneproject.databinding.ItemShoppingBinding
+import com.example.capstoneproject.data.entities.product.Basket
+import com.example.capstoneproject.databinding.ItemBasketBinding
 
 
-class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketVH>() {
-    class BasketVH(val binding: ItemShoppingBinding) : RecyclerView.ViewHolder(binding.root)
+class BasketAdapter(
+    private val onBasketListToDeleteClickHandler: OnBasketListToDeleteClickHandler
+) :
+    RecyclerView.Adapter<BasketAdapter.BasketVH>() {
+    class BasketVH(val binding: ItemBasketBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallBack = object : DiffUtil.ItemCallback<Basket>() {
         override fun areItemsTheSame(
@@ -33,19 +36,23 @@ class BasketAdapter : RecyclerView.Adapter<BasketAdapter.BasketVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketVH {
         val binding =
-            ItemShoppingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemBasketBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BasketVH(binding)
     }
 
     override fun onBindViewHolder(holder: BasketVH, position: Int) {
-        val list = differ.currentList[position]
+        val product = differ.currentList[position]
         holder.binding.apply {
-            list.productImage?.let { image ->
+            product.productImage?.let { image ->
                 ivShoppingProduct.downloadImage(image)
             }
-            tvItemCount.text = list.productCount
-            tvShoppingProductName.text = list.productName
-            tvShoppingProductPrice.text = list.productPrice.toString()
+            tvItemCount.text = product.productCount
+            tvShoppingProductName.text = product.productName
+            tvShoppingProductPrice.text = product.productPrice
+
+            bvDelete.setOnClickListener {
+                onBasketListToDeleteClickHandler.deleteItem(product)
+            }
         }
     }
 
