@@ -39,6 +39,8 @@ object Constant {
 
     const val ALL_PRODUCTS_ENDPOINT = "get_products.php"
     const val ADD_PRODUCTS_TO_BAG_ENDPOINT = "add_to_bag.php"
+    const val GET_PRODUCTS_FROM_BAG_BY_USER_ENDPOINT = "get_bag_products_by_user.php"
+    const val DELETE_BAG_ITEM_ENDPOINT = "delete_to_bag.php"
     const val ALL_ORDERS_OF_USER_ENDPOINT = "carts/user/{user_id}"
 
     const val STRING_ARGS_ID = "category"
