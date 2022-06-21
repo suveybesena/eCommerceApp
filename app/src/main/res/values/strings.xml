@@ -52,5 +52,6 @@
     <string name="user_phone">User Phone</string>
     <string name="user_address">User Address</string>
     <string name="address">Address</string>
+    <string name="adress">Adress</string>
 
 </resources>
