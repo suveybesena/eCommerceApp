@@ -1,6 +1,7 @@
 package com.example.capstoneproject.presentation.basket
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -13,8 +14,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.work.*
 import com.example.capstoneproject.R
+import com.example.capstoneproject.common.Constant.MAP_SHARED_PREF_KEY
 import com.example.capstoneproject.data.entities.product.Basket
 import com.example.capstoneproject.data.entities.product.Purchased
 import com.example.capstoneproject.databinding.FragmentBasketBinding
@@ -28,6 +31,7 @@ import javax.inject.Inject
 class BasketFragment() : Fragment() {
     private var basketBinding: FragmentBasketBinding? = null
     private val basketViewModel: BasketViewModel by viewModels()
+    private val args: BasketFragmentArgs by navArgs()
     lateinit var basketAdapter: BasketAdapter
     private lateinit var request: WorkRequest
 
@@ -59,6 +63,20 @@ class BasketFragment() : Fragment() {
     }
 
     private fun initObserver() {
+        val sharedPref = activity?.getSharedPreferences(
+            "getSharedPref", Context.MODE_PRIVATE
+        )
+        val pref = sharedPref?.getString(MAP_SHARED_PREF_KEY, null)
+        if (pref == null) {
+            basketBinding?.bvAdress?.text = "Click to select address."
+        } else {
+            basketBinding?.bvAdress?.text = pref.toString()
+        }
+        with(sharedPref?.edit()) {
+            this?.remove(MAP_SHARED_PREF_KEY)
+            this?.commit()
+        }
+
         val workCondition = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
@@ -97,6 +115,7 @@ class BasketFragment() : Fragment() {
                                                     purchasedItem.currentUserId,
                                                     purchasedItem.productPrice,
                                                     purchasedItem.productImage,
+                                                    bvAdress.text.toString()
                                                 )
                                                 basketViewModel.handleEvent(
                                                     BasketUiEvent.InsertPurchasedToDatabase(

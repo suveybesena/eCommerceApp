@@ -1,5 +1,6 @@
 package com.example.capstoneproject.presentation.map
 
+import android.content.Context
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -49,26 +50,22 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap.clear()
         val geocoder = Geocoder(requireContext(), Locale.getDefault())
         var address = ""
-        try {
-            val adressList = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-            if (adressList.get(0).subAdminArea != null) {
-                address += adressList.get(0).subAdminArea
-                if (adressList.get(0).adminArea != null) {
-                    address += adressList.get(0).adminArea
-                }
-            }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        val adressList = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+        address = adressList.get(0).getAddressLine(0)
         binding?.apply {
             twLocation.text = address
             println(address)
             bwCheck.setOnClickListener {
-                val bundle = Bundle().apply {
-                    putString(Constant.PARCELABLE_ARGS_ID, address)
+                val sharedPref =
+                    activity?.getSharedPreferences(
+                        "getSharedPref",
+                        Context.MODE_PRIVATE
+                    )
+                with(sharedPref?.edit()) {
+                    this?.putString(Constant.MAP_SHARED_PREF_KEY, address)
+                    this?.apply()
                 }
-
+                findNavController().navigate(R.id.action_mapFragment_to_basketFragment)
             }
         }
     }

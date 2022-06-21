@@ -31,7 +31,7 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="Get a Location"
-            android:textColor="@color/white" />
+            android:textColor="@color/button_text" />
         </com.google.android.material.card.MaterialCardView>
 
         <ImageView
@@ -42,7 +42,7 @@
             android:layout_marginEnd="8dp"
             android:elevation="5dp"
             android:layout_marginBottom="1dp"
-            android:background="@drawable/ic_search"
+            android:background="@drawable/ic_check"
             app:layout_constraintBottom_toBottomOf="@+id/layoutCardView"
             app:layout_constraintEnd_toEndOf="@id/layoutCardView"
             app:layout_constraintTop_toTopOf="@+id/layoutCardView" />
