@@ -2,6 +2,7 @@ package com.example.capstoneproject.common
 
 object Constant {
     const val SHARED_PREF_KEY = "currentUser"
+    const val MAP_SHARED_PREF_KEY = "location"
     const val SET_SHARED_PREF_KEY = "getSharedPref"
 
     const val PRODUCT_DB_NAME = "product_db"
@@ -12,6 +13,7 @@ object Constant {
     const val COLLECTION_DB_NAME = "collection_db"
     const val USER_DB_NAME = "user_db"
     const val LOCAL_DB_PRODUCT_IMAGE = "productImage"
+    const val LOCAL_DB_PURCHASED_ADRESS = "adress"
 
     const val LOCAL_DB_PRODUCT_PRICE = "productPrice"
     const val LOCAL_DB_PRODUCT_CATEGORY = "productCategory"

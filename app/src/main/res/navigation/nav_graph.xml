@@ -149,6 +149,10 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.capstoneproject.presentation.map.MapFragment"
-        android:label="MapFragment" />
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+    </fragment>
 
 </navigation>

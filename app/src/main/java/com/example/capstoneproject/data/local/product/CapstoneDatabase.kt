@@ -15,7 +15,7 @@ import com.example.capstoneproject.data.local.user.UserDAO
 
 @Database(
     entities = [Purchased::class, Basket::class, Favorites::class, Collection::class, User::class, Product::class],
-    version = 2
+    version = 1
 )
 abstract class CapstoneDatabase : RoomDatabase() {
     abstract fun basketDAO(): BasketDAO

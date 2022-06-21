@@ -17,6 +17,8 @@ data class Purchased(
     val productPrice: String?,
     @ColumnInfo(name = Constant.LOCAL_DB_PRODUCT_IMAGE)
     val productImage: String?,
+    @ColumnInfo(name = Constant.LOCAL_DB_PURCHASED_ADRESS)
+    val address: String?,
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = Constant.LOCAL_DB_PRODUCT_ID)
     val productId: Int? = null
