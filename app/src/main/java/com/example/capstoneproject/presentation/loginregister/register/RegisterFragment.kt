@@ -47,17 +47,16 @@ class RegisterFragment : Fragment() {
                 val userEmail = etEmailAddress.text.toString()
                 val userPassword = etPassword.text.toString()
                 val name = etPersonName.text.toString()
-                val uuid = UUID.randomUUID().toString()
                 val sharedPref =
                     activity?.getSharedPreferences(
                         "getSharedPref",
                         Context.MODE_PRIVATE
                     )
                 with(sharedPref?.edit()) {
-                    this?.putString(Constant.SHARED_PREF_KEY, uuid)
+                    this?.putString(Constant.SHARED_PREF_KEY, name)
                     this?.apply()
                 }
-                val user = User(name, userEmail, userPassword, userPhone, userAddress, uuid)
+                val user = User(name, userEmail, userPassword, userPhone, userAddress, name)
                 registerViewModel.handleEvent(
                     RegisterUiEvent.SignUp(
                         userEmail,
