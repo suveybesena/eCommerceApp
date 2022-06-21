@@ -1,5 +1,6 @@
 package com.example.capstoneproject.presentation.loginregister.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.capstoneproject.R
+import com.example.capstoneproject.common.Constant
 import com.example.capstoneproject.common.Constant.FAILED_LOGIN
 import com.example.capstoneproject.common.Constant.SUCCESS_LOGIN
 import com.example.capstoneproject.databinding.FragmentLoginBinding
@@ -60,6 +62,15 @@ class LoginFragment : Fragment() {
                             }
                         }
                     }
+                }
+                val sharedPref =
+                    activity?.getSharedPreferences(
+                        "getSharedPref",
+                        Context.MODE_PRIVATE
+                    )
+                with(sharedPref?.edit()) {
+                    this?.putString(Constant.SHARED_PREF_KEY, userName)
+                    this?.apply()
                 }
             }
         }

@@ -304,7 +304,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/layoutCollections"
                 style="@style/card_view_style"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="@dimen/item_padding"
                 android:layout_marginStart="@dimen/item_padding"
                 android:layout_marginTop="@dimen/item_padding"
                 android:layout_marginEnd="@dimen/item_padding"

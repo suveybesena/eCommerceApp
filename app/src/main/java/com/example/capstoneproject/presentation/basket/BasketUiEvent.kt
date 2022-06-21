@@ -8,5 +8,7 @@ sealed class BasketUiEvent {
     data class InsertPurchasedToDatabase(val purchased: Purchased) : BasketUiEvent()
     data class DeleteBasketItem(val basketItem: Basket) : BasketUiEvent()
     data class GetBasketItemCount(val userId: String) : BasketUiEvent()
+    data class GetBagBasketFromAPI(var userId: String) : BasketUiEvent()
+    data class DeleteProductFromBag(val id: Int) : BasketUiEvent()
 }
 

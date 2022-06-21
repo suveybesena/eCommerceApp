@@ -20,6 +20,12 @@
         <action
             android:id="@+id/action_basketFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_basketFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -31,9 +37,7 @@
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_createProductFragment"
-            app:destination="@id/createProductFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -61,6 +65,9 @@
         <action
             android:id="@+id/action_profileFragment_to_myFavoritesFragment"
             app:destination="@id/myFavoritesFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginRegisterFragment"
+            app:destination="@id/loginRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginRegisterFragment"
@@ -125,14 +132,7 @@
         android:id="@+id/myFavoritesFragment"
         android:name="com.example.capstoneproject.presentation.favorites.myfavorites.MyFavoritesFragment"
         android:label="MyFavoritesFragment" />
-    <fragment
-        android:id="@+id/createProductFragment"
-        android:name="com.example.capstoneproject.presentation.createproduct.CreateProductFragment"
-        android:label="CreateProductFragment" >
-        <action
-            android:id="@+id/action_createProductFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.capstoneproject.presentation.splash.SplashFragment"
@@ -142,5 +142,13 @@
             app:destination="@id/loginRegisterFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.capstoneproject.presentation.map.MapFragment"
+        android:label="MapFragment" />
+
 </navigation>

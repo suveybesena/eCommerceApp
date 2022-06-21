@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.work.*
 import com.example.capstoneproject.R
 import com.example.capstoneproject.data.entities.product.Basket
@@ -30,6 +31,7 @@ class BasketFragment() : Fragment() {
     lateinit var basketAdapter: BasketAdapter
     private lateinit var request: WorkRequest
 
+
     @Inject
     lateinit var userId: String
 
@@ -45,6 +47,15 @@ class BasketFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObserver()
+        initListener()
+    }
+
+    private fun initListener() {
+        basketBinding?.apply {
+            bvAdress.setOnClickListener {
+                findNavController().navigate(R.id.action_basketFragment_to_mapFragment)
+            }
+        }
     }
 
     private fun initObserver() {
@@ -58,6 +69,7 @@ class BasketFragment() : Fragment() {
 
         basketViewModel.handleEvent(BasketUiEvent.GetAllBasketItems(userId))
         basketViewModel.handleEvent(BasketUiEvent.GetBasketItemCount(userId))
+        basketViewModel.handleEvent(BasketUiEvent.GetBagBasketFromAPI(userId))
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 basketViewModel._uiState.collect { state ->
@@ -121,7 +133,7 @@ class BasketFragment() : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 basketViewModel._uiState.collect { state ->
-                    state.basketItemsCount?.let { count->
+                    state.basketItemsCount?.let { count ->
                         basketBinding?.apply {
                             tvBasketItemCount.text = count.toString()
                         }

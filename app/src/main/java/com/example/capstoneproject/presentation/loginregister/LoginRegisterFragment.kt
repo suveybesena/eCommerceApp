@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.capstoneproject.databinding.FragmentLoginRegisterBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginRegisterFragment : Fragment() {

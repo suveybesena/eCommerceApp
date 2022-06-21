@@ -12,9 +12,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/layout_margin"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
                 android:id="@+id/bvArrowBack"
@@ -55,14 +55,14 @@
 
             <TextView
                 android:id="@+id/tvBasketItemCount"
+                style="@style/basket_item_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                style="@style/basket_item_count"
-                app:layout_constraintTop_toTopOf="@id/ivCircle"
-                app:layout_constraintStart_toStartOf="@id/ivCircle"
+                app:layout_constraintBottom_toBottomOf="@id/ivCircle"
                 app:layout_constraintEnd_toEndOf="@id/ivCircle"
-                app:layout_constraintBottom_toBottomOf="@id/ivCircle" />
+                app:layout_constraintStart_toStartOf="@id/ivCircle"
+                app:layout_constraintTop_toTopOf="@id/ivCircle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,8 +74,8 @@
                 android:id="@+id/ivEmptyBasket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/molten"
                 android:padding="@dimen/layout_margin"
+                android:src="@drawable/molten"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -87,8 +87,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="150dp"
                 android:elevation="5dp"
-                android:padding="@dimen/layout_margin"
                 android:gravity="center"
+                android:padding="@dimen/layout_margin"
                 android:text="@string/empty_basket"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +110,6 @@
             android:id="@+id/layoutBasket"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutTab">
@@ -140,6 +139,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bvAdress"
+                style="@style/title_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_margin"
+                android:text="@string/adress"
+                app:layout_constraintBottom_toTopOf="@id/tvShoppingSubTotal"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tvShoppingSubTotal"

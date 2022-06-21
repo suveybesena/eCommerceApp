@@ -49,7 +49,7 @@ class DetailFragment : Fragment() {
         detailBinding?.apply {
             product.productImage?.let { ivProduct.downloadImage(it) }
             tvProductName.text = product.productTitle
-            tvProductPrice.text = "$${product.productPrice}"
+            tvProductPrice.text = product.productPrice
             tvProductDesc.text = product.productDescription
         }
 
@@ -90,12 +90,47 @@ class DetailFragment : Fragment() {
                     (count * price).toString(),
                     product.productImage
                 )
+                detailViewModel.handleEvent(
+                    DetailUiEvent.AddProductToBasket(
+                        userId,
+                        product.productTitle,
+                        (count * price).toDouble(),
+                        product.productDescription,
+                        product.productCategory,
+                        product.productImage,
+                        0.0,
+                        count,
+                        1
+                    )
+                )
+                lifecycleScope.launch {
+                    viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        detailViewModel._uiState.collect { state ->
+                            state.response.let { response ->
+                                if (response?.status == 1) {
+                                    Snackbar.make(
+                                        requireView(),
+                                        SUCCESS_ADDED_CART,
+                                        Snackbar.LENGTH_LONG
+                                    ).show()
+                                } else {
+                                    Snackbar.make(
+                                        requireView(),
+                                        response?.error.toString(),
+                                        Snackbar.LENGTH_LONG
+                                    ).show()
+                                }
+                            }
+                        }
+                    }
+                }
                 detailViewModel.handleEvent(DetailUiEvent.InsertProductToBasket(basketItem))
-                Snackbar.make(requireView(), SUCCESS_ADDED_CART, Snackbar.LENGTH_LONG).show()
             }
             bvArrowBack.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+
         }
 
     }

@@ -1,5 +1,6 @@
 package com.example.capstoneproject.presentation.profile
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.capstoneproject.R
+import com.example.capstoneproject.common.Constant
 import com.example.capstoneproject.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -91,6 +93,18 @@ class ProfileFragment : Fragment() {
             }
             layoutPurchased.setOnClickListener {
                 findNavController().navigate(R.id.purchasedFragment)
+            }
+            bvCollectionItem.setOnClickListener {
+                val sharedPref =
+                    activity?.getSharedPreferences(
+                        "getSharedPref",
+                        Context.MODE_PRIVATE
+                    )
+                with(sharedPref?.edit()) {
+                    this?.remove(Constant.SHARED_PREF_KEY)
+                    this?.commit()
+                }
+                findNavController().navigate(R.id.loginRegisterFragment)
             }
         }
     }

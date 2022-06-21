@@ -9,6 +9,8 @@ import com.example.capstoneproject.domain.usecase.local.product.DeleteBasketProd
 import com.example.capstoneproject.domain.usecase.local.product.GetBasketItemsCountUseCase
 import com.example.capstoneproject.domain.usecase.local.product.GetBasketProductsFromDatabaseUseCase
 import com.example.capstoneproject.domain.usecase.local.product.InsertProductToPurchasedUseCase
+import com.example.capstoneproject.domain.usecase.remote.product.DeleteProductFromBagUseCase
+import com.example.capstoneproject.domain.usecase.remote.product.GetBagProductsByUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -19,7 +21,9 @@ class BasketViewModel @Inject constructor(
     private val getBasketProductsFromDatabaseUseCase: GetBasketProductsFromDatabaseUseCase,
     private val insertProductToPurchasedUseCase: InsertProductToPurchasedUseCase,
     private val deleteBasketProductUseCase: DeleteBasketProductUseCase,
-    private val getBasketItemCount: GetBasketItemsCountUseCase
+    private val getBasketItemCount: GetBasketItemsCountUseCase,
+    private val getBagProductsByUserUseCase: GetBagProductsByUserUseCase,
+    private val deleteProductFromBagUseCase: DeleteProductFromBagUseCase
 ) :
     ViewModel() {
 
@@ -39,6 +43,40 @@ class BasketViewModel @Inject constructor(
             }
             is BasketUiEvent.GetBasketItemCount -> {
                 getBasketItemsCount(event.userId)
+            }
+            is BasketUiEvent.GetBagBasketFromAPI -> {
+                getBagProducts(event.userId)
+            }
+            is BasketUiEvent.DeleteProductFromBag->{
+                deleteBagProduct(event.id)
+            }
+        }
+    }
+
+    private fun deleteBagProduct(id: Int) {
+        viewModelScope.launch {
+            deleteProductFromBagUseCase.invoke(id).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
+                            state.copy(deleteBagResponse = resultState.data)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getBagProducts(userId: String) {
+        viewModelScope.launch {
+            getBagProductsByUserUseCase.invoke(userId).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
+                            state.copy(bagProducts = resultState.data)
+                        }
+                    }
+                }
             }
         }
     }
