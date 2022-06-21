@@ -58,4 +58,10 @@ class RemoteRepositoryImpl @Inject constructor(
         address: String
     ): CRUDResponse =
         userAPI.signUp(email, password, name, phone, address)
+
+    override suspend fun getBagProductsByUser(user: String): List<ProductsItem> =
+        productAPI.getBagProductsByUser(user)
+
+    override suspend fun deleteFromBag(id: Int): CRUDResponse =
+        productAPI.deleteFromBag(id)
 }
