@@ -18,6 +18,6 @@ interface UserDAO {
     @Query("SELECT * FROM ${Constant.USER_DB_NAME} WHERE currentuser= :userId ")
     suspend fun getCurrentUser(userId: String): User
 
-    @Query("SELECT * FROM ${Constant.USER_DB_NAME} WHERE email = :userEmail AND password =:userPassword")
+    @Query("SELECT * FROM ${Constant.USER_DB_NAME} WHERE username = :userEmail AND password =:userPassword")
     suspend fun login(userEmail: String, userPassword: String): User
 }
