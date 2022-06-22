@@ -13,10 +13,6 @@ data class User(
     val userMail: String?,
     @ColumnInfo(name = Constant.LOCAL_DB_USER_PASSWORD)
     val userPassword: String?,
-    @ColumnInfo(name = Constant.LOCAL_DB_USER_PHONE)
-    val userPhone: String? = null,
-    @ColumnInfo(name = Constant.LOCAL_DB_USER_ADDRESS)
-    val userAddress: String? = null,
     @ColumnInfo(name = Constant.LOCAL_DB_CURRENTUSER_ID)
     val currentUserId: String? = null,
     @PrimaryKey(autoGenerate = true)

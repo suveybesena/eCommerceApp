@@ -49,7 +49,7 @@ class DetailFragment : Fragment() {
         detailBinding?.apply {
             product.productImage?.let { ivProduct.downloadImage(it) }
             tvProductName.text = product.productTitle
-            tvProductPrice.text = product.productPrice
+            tvProductPrice.text = "$${product.productPrice}"
             tvProductDesc.text = product.productDescription
         }
 
@@ -81,13 +81,13 @@ class DetailFragment : Fragment() {
             bvAddCard.setOnClickListener {
                 val itemCount = count.toString()
                 val product = args.detail
-                val price = tvProductPrice.text.toString().toFloat()
+                val price = product.productPrice?.toFloat()
                 val basketItem = Basket(
                     product.productTitle,
                     product.productDescription,
                     itemCount,
                     userId,
-                    (count * price).toString(),
+                    (count * price!!).toString(),
                     product.productImage
                 )
                 detailViewModel.handleEvent(
@@ -114,11 +114,11 @@ class DetailFragment : Fragment() {
                                         Snackbar.LENGTH_LONG
                                     ).show()
                                 } else {
-                                    Snackbar.make(
-                                        requireView(),
-                                        response?.error.toString(),
-                                        Snackbar.LENGTH_LONG
-                                    ).show()
+                                   //Snackbar.make(
+                                   //    requireView(),
+                                   //    response?.error.toString(),
+                                   //    Snackbar.LENGTH_LONG
+                                   //).show()
                                 }
                             }
                         }

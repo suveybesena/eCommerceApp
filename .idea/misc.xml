@@ -28,23 +28,25 @@
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/bg_card_button.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/bottom_navigation_bar.xml" value="0.1" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_basket.xml" value="0.18" />
-        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_categories.xml" value="0.15489130434782608" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_categories.xml" value="0.22" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_collection.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_create_product.xml" value="0.25" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_detail.xml" value="0.22" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_favorites.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_forgot.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_home.xml" value="0.22" />
-        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_login.xml" value="0.12658227848101267" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_login_register.xml" value="0.22" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_map.xml" value="0.25" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_maps.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_my_collection.xml" value="0.2" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_my_favorites.xml" value="0.22" />
-        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_profile.xml" value="0.18" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_purchased.xml" value="0.18" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_register.xml" value="0.22" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_shopping.xml" value="0.22" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_splash.xml" value="0.1" />
+        <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/fragment_success_order.xml" value="0.25" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_basket.xml" value="0.25" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_campaigns.xml" value="0.5" />
         <entry key="..\:/Users/Yusuf/AndroidStudioProjects/CapstoneProject/app/src/main/res/layout/item_category.xml" value="0.33" />

@@ -34,9 +34,9 @@ class LoginRegisterFragment : Fragment() {
                 it.tabs, it.vpLoginRegister
             ) { tab, position ->
                 if (position == 0) {
-                    tab.text = "Register"
-                } else {
                     tab.text = "Login"
+                } else {
+                    tab.text = "Register"
                 }
             }.attach()
         }

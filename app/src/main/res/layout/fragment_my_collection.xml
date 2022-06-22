@@ -1,65 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.favorites.mycollection.MyCollectionFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/ivEmptyImage"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:src="@drawable/doughnut"
+        app:layout_constraintBottom_toBottomOf="@id/rvMyCollections"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        style="@style/empty_list_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.favorites.mycollection.MyCollectionFragment">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/empty_list"
+        app:layout_constraintEnd_toEndOf="@id/ivEmptyImage"
+        app:layout_constraintStart_toStartOf="@id/ivEmptyImage"
+        app:layout_constraintTop_toBottomOf="@id/ivEmptyImage" />
 
-        <ImageView
-            android:id="@+id/ivEmptyImage"
-            android:layout_width="350dp"
-            android:layout_height="250dp"
-            android:src="@drawable/doughnut"
-            app:layout_constraintBottom_toBottomOf="@id/rvMyCollections"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMyCollections"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/tvCategories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvEmpty"
-            style="@style/empty_list_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/empty_list"
-            app:layout_constraintEnd_toEndOf="@id/ivEmptyImage"
-            app:layout_constraintStart_toStartOf="@id/ivEmptyImage"
-            app:layout_constraintTop_toBottomOf="@id/ivEmptyImage" />
+    <TextView
+        android:id="@+id/tvCategories"
+        style="@style/title_categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/roboto"
+        android:padding="@dimen/categories_text_padding"
+        android:text="@string/check_this_out"
+        app:layout_constraintBottom_toTopOf="@id/rvCheckThisOut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvMyCollections" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMyCollections"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/tvCategories"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvCategories"
-            style="@style/title_categories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:padding="@dimen/categories_text_padding"
-            android:layout_marginStart="15dp"
-            android:text="@string/check_this_out"
-            app:layout_constraintBottom_toTopOf="@id/rvCheckThisOut"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvMyCollections" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCheckThisOut"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/rv_discount_height"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCategories" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCheckThisOut"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/rv_discount_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCategories" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.capstoneproject.R
 import com.example.capstoneproject.common.Constant
+import com.example.capstoneproject.common.Constant.BLANK_FIELD_ERROR
 import com.example.capstoneproject.common.Constant.FAILED_LOGIN
 import com.example.capstoneproject.common.Constant.SUCCESS_LOGIN
+import com.example.capstoneproject.data.model.AuthModel
 import com.example.capstoneproject.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,25 +42,27 @@ class LoginFragment : Fragment() {
     private fun initListeners() {
         loginBinding?.apply {
             bvLogin.setOnClickListener {
-                val userName = etUserName.text.toString()
-                val userPassword = etPassword.text.toString()
-                loginViewModel.handleEvent(LoginUiEvent.SignIn(userName, userPassword))
-                lifecycleScope.launch {
-                    loginViewModel._uiState.collect { state ->
-                        state.userLogin.let { user ->
-                            if (user != null) {
-                                Snackbar.make(
-                                    requireView(),
-                                    SUCCESS_LOGIN,
-                                    Snackbar.LENGTH_LONG
-                                ).show()
-                                findNavController().navigate(R.id.homeFragment)
-                            } else {
-                                Snackbar.make(
-                                    requireView(),
-                                    FAILED_LOGIN,
-                                    Snackbar.LENGTH_LONG
-                                ).show()
+                val userEmail = etMail.text.toString().trim()
+                val userPassword = etPassword.text.toString().trim()
+                if (userEmail.isEmpty()) {
+                    etMail.error = BLANK_FIELD_ERROR
+                } else if (userPassword.isEmpty()) {
+                    etPassword.error = BLANK_FIELD_ERROR
+                } else {
+                    val auth = AuthModel(userEmail, userPassword)
+                    loginViewModel.handleEvent(LoginUiEvent.Login(auth))
+                    lifecycleScope.launch {
+                        loginViewModel._uiState.collect { state ->
+                            state.isLoggedIn.let { loggedIn ->
+                                if (loggedIn == true) {
+                                    Snackbar.make(
+                                        requireView(),
+                                        SUCCESS_LOGIN,
+                                        Snackbar.LENGTH_LONG
+                                    ).show()
+                                    findNavController().navigate(R.id.homeFragment)
+                                } else {
+                                }
                             }
                         }
                     }
@@ -69,9 +73,13 @@ class LoginFragment : Fragment() {
                         Context.MODE_PRIVATE
                     )
                 with(sharedPref?.edit()) {
-                    this?.putString(Constant.SHARED_PREF_KEY, userName)
+                    this?.putString(Constant.SHARED_PREF_KEY, userEmail)
                     this?.apply()
                 }
+            }
+
+            bvForgotPassword.setOnClickListener {
+                findNavController().navigate(R.id.action_loginRegisterFragment_to_forgotFragment)
             }
         }
     }

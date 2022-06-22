@@ -82,7 +82,7 @@ class CategoriesResultAdapter(
             }
             tvProductDesc.text = product.productDescription
             tvProductName.text = product.productTitle
-            tvProductPrice.text = product.productPrice
+            tvProductPrice.text = "$${product.productPrice}"
             val clicked = false
             bvAdd.setOnClickListener {
                 if (!clicked) {

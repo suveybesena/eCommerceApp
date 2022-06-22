@@ -1,78 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutName"
+    style="@style/card_view_style"
+    android:layout_margin="@dimen/item_margin">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/layoutName"
-        style="@style/card_view_style"
-        android:layout_margin="@dimen/item_margin">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivShoppingProduct"
+            android:layout_width="@dimen/fav_product_image_height"
+            android:layout_height="@dimen/fav_product_image_height"
+            android:scaleType="fitXY"
+            android:src="@drawable/cream"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/ivShoppingProduct"
-                android:layout_width="@dimen/fav_product_image_height"
-                android:layout_height="@dimen/fav_product_image_height"
-                android:scaleType="fitXY"
-                android:src="@drawable/cream"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvShoppingProductName"
+            style="@style/product_name"
+            android:fontFamily="@font/roboto"
+            android:paddingStart="@dimen/shopping_text_padding_start"
+            android:text="@string/product_name"
+            app:layout_constraintBottom_toBottomOf="@id/tvShoppingProductDesc"
+            app:layout_constraintEnd_toStartOf="@id/bvDelete"
+            app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
+            app:layout_constraintTop_toTopOf="@id/ivShoppingProduct" />
 
-            <TextView
-                android:id="@+id/tvShoppingProductName"
-                style="@style/product_name"
-                android:fontFamily="@font/roboto"
-                android:paddingStart="@dimen/shopping_text_padding_start"
-                android:text="@string/product_name"
-                app:layout_constraintBottom_toBottomOf="@id/tvShoppingProductDesc"
-                app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-                app:layout_constraintTop_toTopOf="@id/ivShoppingProduct"
-                app:layout_constraintEnd_toStartOf="@id/bvDelete"/>
+        <TextView
+            android:id="@+id/tvShoppingProductDesc"
+            style="@style/product_desc"
+            android:fontFamily="@font/roboto_thin"
+            android:paddingStart="@dimen/shopping_text_padding_start"
+            android:text="@string/product_desc"
+            app:layout_constraintEnd_toStartOf="@id/bvDelete"
+            app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
+            app:layout_constraintTop_toBottomOf="@id/tvShoppingProductName" />
 
-            <TextView
-                android:id="@+id/tvShoppingProductDesc"
-                style="@style/product_desc"
-                android:fontFamily="@font/roboto_thin"
-                app:layout_constraintEnd_toStartOf="@id/bvDelete"
-                android:paddingStart="@dimen/shopping_text_padding_start"
-                android:text="@string/product_desc"
-                app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-                app:layout_constraintTop_toBottomOf="@id/tvShoppingProductName" />
+        <TextView
+            android:id="@+id/tvShoppingProductPrice"
+            style="@style/product_desc"
+            android:fontFamily="@font/roboto"
+            android:paddingStart="@dimen/shopping_text_padding_start"
+            android:text="@string/product_price"
+            app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
+            app:layout_constraintTop_toBottomOf="@id/tvShoppingProductDesc" />
 
-            <TextView
-                android:id="@+id/tvShoppingProductPrice"
-                style="@style/product_desc"
-                android:fontFamily="@font/roboto"
-                android:paddingStart="@dimen/shopping_text_padding_start"
-                android:text="@string/product_price"
-                app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-                app:layout_constraintTop_toBottomOf="@id/tvShoppingProductDesc" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bvDelete"
+            style="@style/delete_floating_action_button"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_delete"
+            app:borderWidth="0dp"
+            app:fabCustomSize="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvItemCount" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/bvDelete"
-                style="@style/delete_floating_action_button"
-                android:src="@drawable/ic_delete"
-                app:borderWidth="0dp"
-                app:fabCustomSize="35dp"
-                android:layout_margin="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvItemCount" />
-
-            <TextView
-                android:id="@+id/tvItemCount"
-                style="@style/product_count"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="1"
-                app:layout_constraintBottom_toTopOf="@id/bvDelete"
-                app:layout_constraintEnd_toEndOf="@id/bvDelete"
-                app:layout_constraintStart_toStartOf="@id/bvDelete"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvItemCount"
+            style="@style/product_count"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="1"
+            app:layout_constraintBottom_toTopOf="@id/bvDelete"
+            app:layout_constraintEnd_toEndOf="@id/bvDelete"
+            app:layout_constraintStart_toStartOf="@id/bvDelete"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-</layout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

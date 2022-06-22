@@ -196,7 +196,13 @@
         <item name="android:backgroundTint">@color/search_bg</item>
         <item name="android:foregroundGravity">center</item>
         <item name="android:tint">@color/white</item>
+    </style>
 
+    <style name="floating_action_button_minus">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/button_text</item>
+        <item name="android:foregroundGravity">center</item>
     </style>
     <style name="produtc_floating_action_button">
         <item name="android:layout_width">wrap_content</item>

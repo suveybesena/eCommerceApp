@@ -28,7 +28,6 @@ class GetAllProductsByNameUseCase @Inject constructor(
             emit(Resource.Success(mutableList))
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
-            println(e.localizedMessage)
         }
     }.flowOn(ioDispatcher)
 }

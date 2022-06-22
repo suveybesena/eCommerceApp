@@ -1,12 +1,11 @@
 package com.example.capstoneproject.presentation.loginregister.register
 
-import com.example.capstoneproject.data.entities.user.UserItem
-import com.example.capstoneproject.data.model.CRUDResponse
+import com.google.firebase.auth.FirebaseUser
 
 data class RegisterUiState(
-    val userItem: UserItem? = null,
-    val apiError: String? = null,
+    var error: String? = null,
+    val isRegister: Boolean? = false,
     val dbError: String? = null,
-    val isLoading: Boolean? = null,
-    val response: CRUDResponse? = null
+    val currentUser: String? = null,
+    val firebaseUser: FirebaseUser? = null
 )

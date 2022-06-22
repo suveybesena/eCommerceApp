@@ -54,7 +54,6 @@ class ProfileFragment : Fragment() {
                         profileBinding?.apply {
                             tvUserName.text = user.userName
                             tvUserMail.text = user.userMail
-                            tvUserPhone.text = user.userPhone
                         }
                     }
                 }

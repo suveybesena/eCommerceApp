@@ -1,199 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.loginregister.register.RegisterFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.loginregister.register.RegisterFragment">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layoutName"
+        style="@style/card_view_style"
+        android:layout_marginStart="@dimen/item_margin"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="@dimen/item_margin"
+        android:layout_marginBottom="@dimen/item_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/layoutName"
-            style="@style/card_view_style"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="@dimen/item_margin"
-            android:layout_marginEnd="@dimen/item_margin"
-            android:layout_marginBottom="@dimen/item_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/categories_text_padding"
-                android:orientation="vertical"
-                android:padding="@dimen/categories_text_padding">
-
-                <TextView
-                    style="@style/login_register_edit_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:text="@string/name" />
-
-                <EditText
-                    android:id="@+id/etPersonName"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_register_edittext_height"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:hint="@string/user_name_name"
-                    android:inputType="textPersonName" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/layoutMail"
-            style="@style/card_view_style"
-            android:layout_margin="@dimen/item_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutName">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/categories_text_padding"
-                android:orientation="vertical"
-                android:padding="@dimen/categories_text_padding">
-
-                <TextView
-                    style="@style/login_register_edit_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:text="@string/email" />
-
-                <EditText
-                    android:id="@+id/etEmailAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_register_edittext_height"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/layoutPass"
-            style="@style/card_view_style"
-            android:layout_margin="@dimen/item_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutMail">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/categories_text_padding"
-                android:orientation="vertical"
-                android:padding="@dimen/categories_text_padding">
-
-                <TextView
-                    style="@style/login_register_edit_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:text="@string/password" />
-
-                <EditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_register_edittext_height"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/layoutUserPhone"
-            style="@style/card_view_style"
-            android:layout_margin="@dimen/item_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutPass">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/categories_text_padding"
-                android:orientation="vertical"
-                android:padding="@dimen/categories_text_padding">
-
-                <TextView
-                    style="@style/login_register_edit_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:text="@string/phone" />
-
-                <EditText
-                    android:id="@+id/etUserPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_register_edittext_height"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:hint="@string/phone"
-                    android:inputType="textPersonName" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/layoutUserAddress"
-            style="@style/card_view_style"
-            android:layout_margin="@dimen/item_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutUserPhone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/categories_text_padding"
-                android:orientation="vertical"
-                android:padding="@dimen/categories_text_padding">
-
-                <TextView
-                    style="@style/login_register_edit_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:text="@string/address" />
-
-                <EditText
-                    android:id="@+id/etUserAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/login_register_edittext_height"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:hint="@string/address"
-                    android:inputType="textPersonName" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/bvRegister"
-            style="@style/extended_fab"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/item_margin"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:text="@string/sign_up"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:borderWidth="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/categories_text_padding"
+            android:orientation="vertical"
+            android:padding="@dimen/categories_text_padding">
+
+            <TextView
+                style="@style/login_register_edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="@string/name" />
+
+            <EditText
+                android:id="@+id/etPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_register_edittext_height"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="@string/user_name_name"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layoutMail"
+        style="@style/card_view_style"
+        android:layout_margin="@dimen/item_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutName">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/categories_text_padding"
+            android:orientation="vertical"
+            android:padding="@dimen/categories_text_padding">
+
+            <TextView
+                style="@style/login_register_edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/etEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_register_edittext_height"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layoutPass"
+        style="@style/card_view_style"
+        android:layout_margin="@dimen/item_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutMail">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/categories_text_padding"
+            android:orientation="vertical"
+            android:padding="@dimen/categories_text_padding">
+
+            <TextView
+                style="@style/login_register_edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_register_edittext_height"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/bvRegister"
+        style="@style/extended_fab"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/item_margin"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,7 +40,6 @@ class AddProductToBagUseCase @Inject constructor(
             emit(Resource.Success(addProduct))
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
-            println(e.localizedMessage)
         }
     }.flowOn(ioDispatcher)
 }

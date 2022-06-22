@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_basketFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_basketFragment_to_successOrderFragment"
+            app:destination="@id/successOrderFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -83,6 +86,9 @@
             android:id="@+id/action_loginRegisterFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_loginRegisterFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -92,6 +98,9 @@
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -153,6 +162,20 @@
         <action
             android:id="@+id/action_mapFragment_to_basketFragment"
             app:destination="@id/basketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotFragment"
+        android:name="com.example.capstoneproject.presentation.forgot.ForgotFragment"
+        android:label="ForgotFragment" />
+    <fragment
+        android:id="@+id/successOrderFragment"
+        android:name="com.example.capstoneproject.presentation.basket.successorder.SuccessOrderFragment"
+        android:label="fragment_success_order"
+        tools:layout="@layout/fragment_success_order" >
+        <action
+            android:id="@+id/action_successOrderFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
 
 </navigation>

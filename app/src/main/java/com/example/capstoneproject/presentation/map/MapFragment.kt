@@ -54,7 +54,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         address = adressList.get(0).getAddressLine(0)
         binding?.apply {
             twLocation.text = address
-            println(address)
             bwCheck.setOnClickListener {
                 val sharedPref =
                     activity?.getSharedPreferences(

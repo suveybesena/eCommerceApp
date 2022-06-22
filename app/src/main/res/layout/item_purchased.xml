@@ -1,53 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/layoutName"
-        style="@style/card_view_style"
-        android:layout_margin="@dimen/item_margin">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutName"
+    style="@style/card_view_style"
+    android:layout_margin="@dimen/item_margin">
 
-            <ImageView
-                android:id="@+id/ivShoppingProduct"
-                android:layout_width="@dimen/fav_product_image_height"
-                android:layout_height="@dimen/fav_product_image_height"
-                android:scaleType="fitXY"
-                android:src="@drawable/cream"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvShoppingProductName"
-                style="@style/product_name"
-                android:fontFamily="@font/roboto"
-                android:paddingStart="@dimen/shopping_text_padding_start"
-                android:text="@string/product_name"
-                app:layout_constraintBottom_toBottomOf="@id/tvShoppingProductDesc"
-                app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-                app:layout_constraintTop_toTopOf="@id/ivShoppingProduct" />
+        <ImageView
+            android:id="@+id/ivShoppingProduct"
+            android:layout_width="@dimen/fav_product_image_height"
+            android:layout_height="@dimen/fav_product_image_height"
+            android:scaleType="fitXY"
+            android:src="@drawable/cream"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvShoppingProductDesc"
-                style="@style/product_desc"
-                android:fontFamily="@font/roboto_thin"
-                android:paddingStart="@dimen/shopping_text_padding_start"
-                android:text="@string/product_desc"
-                app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-                app:layout_constraintTop_toBottomOf="@id/tvShoppingProductName" />
+        <TextView
+            android:id="@+id/tvShoppingProductName"
+            style="@style/product_name"
+            android:fontFamily="@font/roboto"
+            android:paddingStart="@dimen/shopping_text_padding_start"
+            android:text="@string/product_name"
+            app:layout_constraintBottom_toBottomOf="@id/tvShoppingProductDesc"
+            app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
+            app:layout_constraintTop_toTopOf="@id/ivShoppingProduct" />
 
-            <TextView
-                android:id="@+id/tvShoppingProductPrice"
-                style="@style/product_desc"
-                android:fontFamily="@font/roboto"
-                android:paddingStart="@dimen/shopping_text_padding_start"
-                android:text="@string/product_price"
-                app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
-                app:layout_constraintTop_toBottomOf="@id/tvShoppingProductDesc" />
+        <TextView
+            android:id="@+id/tvShoppingProductDesc"
+            style="@style/product_desc"
+            android:fontFamily="@font/roboto_thin"
+            android:paddingStart="@dimen/shopping_text_padding_start"
+            android:text="@string/product_desc"
+            app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
+            app:layout_constraintTop_toBottomOf="@id/tvShoppingProductName" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-</layout>
+        <TextView
+            android:id="@+id/tvShoppingProductPrice"
+            style="@style/product_desc"
+            android:fontFamily="@font/roboto"
+            android:paddingStart="@dimen/shopping_text_padding_start"
+            android:text="@string/product_price"
+            app:layout_constraintStart_toEndOf="@id/ivShoppingProduct"
+            app:layout_constraintTop_toBottomOf="@id/tvShoppingProductDesc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

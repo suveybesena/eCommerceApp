@@ -1,5 +1,9 @@
 package com.example.capstoneproject.presentation.loginregister.login
 
+import com.example.capstoneproject.data.model.AuthModel
+
 sealed class LoginUiEvent {
-    data class SignIn(val userName: String, val password: String) : LoginUiEvent()
+
+    data class Login(var authModel: AuthModel) : LoginUiEvent()
+    object GetCurrentUser : LoginUiEvent()
 }

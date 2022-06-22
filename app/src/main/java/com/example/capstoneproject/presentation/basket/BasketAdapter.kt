@@ -48,7 +48,7 @@ class BasketAdapter(
             }
             tvItemCount.text = product.productCount
             tvShoppingProductName.text = product.productName
-            tvShoppingProductPrice.text = product.productPrice
+            tvShoppingProductPrice.text = "$${product.productPrice}"
 
             bvDelete.setOnClickListener {
                 onBasketListToDeleteClickHandler.deleteItem(product)

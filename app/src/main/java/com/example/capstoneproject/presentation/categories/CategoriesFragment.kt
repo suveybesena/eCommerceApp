@@ -63,6 +63,7 @@ class CategoriesFragment : Fragment() {
 
     private fun initObserve() {
         val categoryName = args.category
+        categoriesBinding?.tvCategories?.text = categoryName
         categoriesViewModel.handleEvent(
             CategoriesUiEvent.GetProductsByCategoriesUseCase(
                 categoryName

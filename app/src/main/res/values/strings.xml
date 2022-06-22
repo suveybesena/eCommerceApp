@@ -53,5 +53,9 @@
     <string name="user_address">User Address</string>
     <string name="address">Address</string>
     <string name="adress">Adress</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="discount">Discount</string>
+    <string name="sucess_order">Your order will be delivered soon. Thank you for choosing our app!</string>
+    <string name="your_order_is_being_processed">Your order is being processed.</string>
 
 </resources>

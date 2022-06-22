@@ -15,6 +15,5 @@ fun UserItem.toUser() = User(
     userName = username,
     userMail = email,
     userPassword = password,
-    userPhone = phone,
     userId = id
 )

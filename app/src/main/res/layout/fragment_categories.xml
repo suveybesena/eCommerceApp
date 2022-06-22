@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
@@ -21,42 +20,14 @@
 
 
         <TextView
+            android:id="@+id/tvCategories"
             style="@style/shopping_text"
             android:fontFamily="@font/roboto"
             android:text="@string/categories"
             app:layout_constraintBottom_toBottomOf="@id/bvArrowBack"
-            app:layout_constraintEnd_toStartOf="@id/bvCard"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/bvArrowBack"
             app:layout_constraintTop_toTopOf="@id/bvArrowBack" />
-
-        <ImageButton
-            android:id="@+id/bvCard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_top_margin"
-            android:background="@drawable/ic_shopping_bag"
-            android:contentDescription="@string/arrow_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivCircle"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/ic_circle"
-            app:layout_constraintBottom_toBottomOf="@id/bvCard"
-            app:layout_constraintEnd_toEndOf="@id/bvCard" />
-
-        <TextView
-            android:id="@+id/tvBasketItemCount"
-            style="@style/basket_item_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            app:layout_constraintBottom_toBottomOf="@id/ivCircle"
-            app:layout_constraintEnd_toEndOf="@id/ivCircle"
-            app:layout_constraintStart_toStartOf="@id/ivCircle"
-            app:layout_constraintTop_toTopOf="@id/ivCircle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvShoppingItems"
@@ -68,4 +39,3 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bvArrowBack" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>

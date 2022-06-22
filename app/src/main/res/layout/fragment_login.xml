@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.loginregister.login.LoginFragment">
@@ -34,15 +34,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
-                    android:text="@string/user_name" />
+                    android:text="@string/email" />
 
                 <EditText
-                    android:id="@+id/etUserName"
+                    android:id="@+id/etMail"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/login_register_edittext_height"
                     android:backgroundTint="@color/white"
                     android:ems="10"
-                    android:hint="@string/user_name"
+                    android:hint="@string/email"
                     android:inputType="textPersonName" />
 
             </LinearLayout>
@@ -84,20 +84,20 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/forgotPassword"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:fontFamily="@font/roboto"
-            android:padding="@dimen/item_padding"
-            android:text="Forgot password."
-            android:textAllCaps="false"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutPass"></Button>
+    <Button
+        android:id="@+id/bvForgotPassword"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:fontFamily="@font/roboto"
+        android:padding="@dimen/item_padding"
+        android:text="Forgot password."
+        android:textAllCaps="false"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutPass" />
 
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -115,4 +115,3 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>

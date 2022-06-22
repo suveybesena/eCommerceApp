@@ -32,7 +32,10 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNavigationView.visibility = View.GONE
             } else if (destination.id == R.id.splashFragment) {
                 binding.bottomNavigationView.visibility = View.GONE
-            } else {
+            } else if(destination.id == R.id.forgotFragment){
+                binding.bottomNavigationView.visibility = View.GONE
+            }
+            else {
                 binding.bottomNavigationView.visibility = View.VISIBLE
             }
         }

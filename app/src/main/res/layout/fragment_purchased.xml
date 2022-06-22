@@ -1,96 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".presentation.purchased.PurchasedFragment">
+
+    <ImageButton
+        android:id="@+id/bvArrowBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_padding"
+        android:layout_marginTop="@dimen/layout_padding"
+        android:background="@drawable/ic_arrow_back"
+        android:contentDescription="@string/arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/shopping_text"
+        android:fontFamily="@font/roboto"
+        android:text="@string/shopping_bag"
+        app:layout_constraintBottom_toBottomOf="@id/bvArrowBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bvArrowBack"
+        app:layout_constraintTop_toTopOf="@id/bvArrowBack" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        tools:context=".presentation.purchased.PurchasedFragment">
+        android:padding="@dimen/layout_padding">
 
-        <ImageButton
-            android:id="@+id/bvArrowBack"
+        <ImageView
+            android:id="@+id/ivEmptyPurchased"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_padding"
-            android:layout_marginStart="@dimen/layout_padding"
-            android:background="@drawable/ic_arrow_back"
-            android:contentDescription="@string/arrow_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            style="@style/shopping_text"
-            android:fontFamily="@font/roboto"
-            android:text="@string/shopping_bag"
-            app:layout_constraintBottom_toBottomOf="@id/bvArrowBack"
-            app:layout_constraintStart_toEndOf="@id/bvArrowBack"
-            app:layout_constraintTop_toTopOf="@id/bvArrowBack"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutEmpty"
-            android:layout_width="match_parent"
-            android:padding="@dimen/layout_padding"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/ivEmptyPurchased"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/umbrella"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvEmptyPurchased"
-                style="@style/empty_list_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp"
-                android:elevation="5dp"
-                android:gravity="center"
-                android:text="@string/empty_basket"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/bvGoHome"
-                style="@style/floating_action_button"
-                android:layout_margin="@dimen/item_margin"
-                android:src="@drawable/ic_add"
-                app:borderWidth="0dp"
-                app:fabSize="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutPurchased"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="invisible"
+            android:src="@drawable/umbrella"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bvArrowBack">
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPurchasedItems"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:padding="@dimen/item_padding"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvEmptyPurchased"
+            style="@style/empty_list_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:text="@string/empty_basket"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bvGoHome"
+            style="@style/floating_action_button"
+            android:layout_margin="@dimen/item_margin"
+            android:src="@drawable/ic_add"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutPurchased"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bvArrowBack">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPurchasedItems"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="@dimen/item_padding"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

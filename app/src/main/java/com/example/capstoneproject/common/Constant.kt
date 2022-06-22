@@ -49,11 +49,14 @@ object Constant {
     const val PARCELABLE_ARGS_ID = "detail"
 
     const val SUCCESS_REGISTER = "Successfully registered."
+    const val FAILED_REGISTER = "Register failed"
     const val SUCCESS_LOGIN = "Successfully logged in."
     const val SUCCESS_ADDED_CART = "The product added to the cart."
     const val FAILED_LOGIN = "Login failed."
     const val INSERT_PRODUCT_COLLECTIONS = "The product added to collections."
     const val INSERT_PRODUCT_FAVORITES = "The product added to favourites."
+    const val MAIL_SEND = "Please check your mail."
+    const val BLANK_FIELD_ERROR = "This field cannot be left blank."
 
     const val CHANNEL_ID = "channelId"
     const val CHANNEL_NAME = "channelName"
