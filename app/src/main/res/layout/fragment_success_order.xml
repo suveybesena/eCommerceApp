@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.basket.successorder.SuccessOrderFragment">
+
+    <ImageView
+        android:id="@+id/ivSuccess"
+        android:layout_width="@dimen/rv_item_height"
+        android:layout_height="@dimen/rv_item_height"
+        android:src="@drawable/bags"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        style="@style/title_categories"
+        android:layout_margin="@dimen/item_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivSuccess"
+        android:text="@string/sucess_order" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/bvContinue"
+        style="@style/extended_fab"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/item_margin"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="Continue Shopping"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

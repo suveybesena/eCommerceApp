@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "402754396195",
-    "project_id": "upschool-capstone-projec-15cf0",
-    "storage_bucket": "upschool-capstone-projec-15cf0.appspot.com"
+    "project_number": "313481093561",
+    "project_id": "e-commerce-32b20",
+    "storage_bucket": "e-commerce-32b20.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:402754396195:android:b347bb8e043ab7ddd05196",
+        "mobilesdk_app_id": "1:313481093561:android:9853ea566197d199f5d668",
         "android_client_info": {
           "package_name": "com.example.capstoneproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "402754396195-3f1huoirsqg6uit6fhr1rbmrk1o393u9.apps.googleusercontent.com",
+          "client_id": "313481093561-6pco2tlcrovr4mr236dcnagm8otu85d4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAP75RSinfUV0DSLh23FQIWP9XWyIsfCXQ"
+          "current_key": "AIzaSyBO1SPlvfLwOIgO3QCVqqpw2avbGvNxVBQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "402754396195-3f1huoirsqg6uit6fhr1rbmrk1o393u9.apps.googleusercontent.com",
+              "client_id": "313481093561-6pco2tlcrovr4mr236dcnagm8otu85d4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
