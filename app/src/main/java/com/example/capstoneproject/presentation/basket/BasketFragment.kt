@@ -95,7 +95,7 @@ class BasketFragment() : Fragment() {
                     state.basketItems.let { flow ->
                         flow?.collect { basketItems ->
                             if (basketItems.isNotEmpty()) {
-                                setWorkReminder(request)
+                               // setWorkReminder(request)
                                 basketBinding?.apply {
                                     layoutEmpty.visibility = View.GONE
                                     layoutBasket.visibility = View.VISIBLE

@@ -236,6 +236,7 @@ class HomeFragment() : Fragment() {
         homeBinding?.rvCategories?.apply {
             adapter = categoriesAdapter
             set3DItem(true)
+            setInfinite(true)
             setAlpha(true)
             setPadding(10, 0, 10, 0)
         }

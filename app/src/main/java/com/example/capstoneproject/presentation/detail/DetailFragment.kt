@@ -114,11 +114,11 @@ class DetailFragment : Fragment() {
                                         Snackbar.LENGTH_LONG
                                     ).show()
                                 } else {
-                                    Snackbar.make(
-                                        requireView(),
-                                        response?.error.toString(),
-                                        Snackbar.LENGTH_LONG
-                                    ).show()
+                                    //Snackbar.make(
+                                    //    requireView(),
+                                    //    response?.error.toString(),
+                                    //    Snackbar.LENGTH_LONG
+                                    //).show()
                                 }
                             }
                         }
