@@ -1,158 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutSearch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/background">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchViewCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/item_margin"
+            app:cardCornerRadius="@dimen/card_corner_radius_small"
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintEnd_toStartOf="@id/bvCard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@null"
+                app:queryHint="Search" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/bvCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_shopping_bag"
+            android:contentDescription="@string/arrow_back"
+            android:elevation="10dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/searchViewCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/searchViewCard" />
+
+        <ImageView
+            android:id="@+id/ivCircle"
+            android:layout_width="@dimen/item_padding"
+            android:layout_height="@dimen/item_padding"
+            android:elevation="10dp"
+            android:src="@drawable/ic_circle"
+            app:layout_constraintBottom_toBottomOf="@id/bvCard"
+            app:layout_constraintEnd_toEndOf="@id/bvCard" />
+
+        <TextView
+            android:id="@+id/tvBasketItemCount"
+            style="@style/basket_item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@id/ivCircle"
+            app:layout_constraintEnd_toEndOf="@+id/bvCard"
+            app:layout_constraintStart_toStartOf="@id/ivCircle"
+            app:layout_constraintTop_toTopOf="@id/ivCircle" />
+
+        <ImageView
+            android:id="@+id/ivShop"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shopvinly"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/title_welcome"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/item_margin"
+            android:text="@string/independent_record_store"
+            android:textColor="@color/background"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ivShop" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearch"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivShop" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutSearch"
+            android:id="@id/layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:paddingStart="@dimen/layout_margin"
-            android:paddingTop="@dimen/layout_margin"
-            android:paddingEnd="@dimen/layout_margin">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/searchViewCard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                app:cardCornerRadius="@dimen/card_corner_radius_small"
-                app:cardElevation="@dimen/card_elevation"
-                app:layout_constraintEnd_toStartOf="@id/bvCard"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.SearchView
-                    android:id="@+id/etSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:iconifiedByDefault="false"
-                    app:queryBackground="@null"
-                    app:queryHint="Search" />
-
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/bvCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_shopping_bag"
-                android:contentDescription="@string/arrow_back"
-                app:layout_constraintBottom_toBottomOf="@id/searchViewCard"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/searchViewCard" />
-
-            <ImageView
-                android:id="@+id/ivCircle"
-                android:layout_width="@dimen/item_padding"
-                android:layout_height="@dimen/item_padding"
-                android:src="@drawable/ic_circle"
-                app:layout_constraintBottom_toBottomOf="@id/bvCard"
-                app:layout_constraintEnd_toEndOf="@id/bvCard" />
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivShop">
 
             <TextView
-                android:id="@+id/tvBasketItemCount"
-                style="@style/basket_item_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                app:layout_constraintBottom_toBottomOf="@id/ivCircle"
-                app:layout_constraintEnd_toEndOf="@id/ivCircle"
-                app:layout_constraintStart_toStartOf="@id/ivCircle"
-                app:layout_constraintTop_toTopOf="@id/ivCircle" />
-
+                android:id="@+id/tvWelcome"
+                style="@style/title_welcome"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="@dimen/categories_text_padding"
+                android:paddingTop="@dimen/item_padding"
+                android:paddingBottom="@dimen/item_padding"
+                android:text="@string/discover"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSearch"
+                android:id="@+id/rvItem"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="@dimen/rv_item_height"
+                android:padding="@dimen/item_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchViewCard" />
+                app:layout_constraintTop_toBottomOf="@id/tvNewProducts" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@id/layout"
+            <TextView
+                android:id="@+id/tvCategories"
+                style="@style/title_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:padding="@dimen/categories_text_padding"
+                android:text="@string/categories"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
+
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+                android:id="@+id/rvCategories"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="@dimen/rv_categories_height"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchViewCard">
+                app:layout_constraintTop_toBottomOf="@id/tvCategories" />
 
-                <TextView
-                    android:id="@+id/tvWelcome"
-                    style="@style/title_welcome"
-                    android:fontFamily="@font/roboto"
-                    android:paddingStart="@dimen/categories_text_padding"
-                    android:paddingTop="@dimen/item_padding"
-                    android:paddingBottom="@dimen/item_padding"
-                    android:text="@string/discover"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tvNewProducts"
+                style="@style/title_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:padding="@dimen/categories_text_padding"
+                android:text="@string/new_products"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvCategories" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/rv_item_height"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvNewProducts" />
+            <TextView
+                android:id="@+id/tvCampaigns"
+                style="@style/title_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:padding="@dimen/categories_text_padding"
+                android:text="@string/discount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvItem" />
 
-                <TextView
-                    android:id="@+id/tvCategories"
-                    style="@style/title_categories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
-                    android:padding="@dimen/categories_text_padding"
-                    android:text="@string/categories"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
-
-                <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
-                    android:id="@+id/rvCategories"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/rv_categories_height"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvCategories" />
-
-                <TextView
-                    android:id="@+id/tvNewProducts"
-                    style="@style/title_categories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
-                    android:padding="@dimen/categories_text_padding"
-                    android:text="@string/new_products"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rvCategories" />
-
-                <TextView
-                    android:id="@+id/tvCampaigns"
-                    style="@style/title_categories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
-                    android:padding="@dimen/categories_text_padding"
-                    android:text="@string/discount"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rvItem" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvCampaigns"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/rv_discount_height"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvCampaigns" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCampaigns"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rv_discount_height"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCampaigns" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
