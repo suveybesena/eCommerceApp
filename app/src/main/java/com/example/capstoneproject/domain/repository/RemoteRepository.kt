@@ -43,4 +43,6 @@ interface RemoteRepository {
     suspend fun deleteFromBag(
         @Field("id") id: Int
     ): CRUDResponse
+
+    suspend fun getCategoriesByUser(user: String): List<String>
 }

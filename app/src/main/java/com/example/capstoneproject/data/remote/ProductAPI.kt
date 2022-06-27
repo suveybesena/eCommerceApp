@@ -2,6 +2,7 @@ package com.example.capstoneproject.data.remote
 
 
 import com.example.capstoneproject.common.Constant.ADD_PRODUCTS_TO_BAG_ENDPOINT
+import com.example.capstoneproject.common.Constant.ALL_CATEGORIES_BY_USER
 import com.example.capstoneproject.common.Constant.ALL_PRODUCTS_ENDPOINT
 import com.example.capstoneproject.common.Constant.ALL_PRODUCTS_IN_CATEGORY_ENDPOINT
 import com.example.capstoneproject.common.Constant.ALL_PRODUCT_BY_USERNAME_ENDPOINT
@@ -41,6 +42,9 @@ interface ProductAPI {
     suspend fun deleteFromBag(
         @Field("id") id: Int
     ): CRUDResponse
+
+    @POST(ALL_CATEGORIES_BY_USER)
+    suspend fun getCategoriesByUser(@Field("user") user: String): List<String>
 
     @GET(ALL_PRODUCTS_ENDPOINT)
     suspend fun getProducts(): List<ProductsItem>

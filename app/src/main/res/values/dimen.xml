@@ -61,4 +61,14 @@
     <dimen name="card_elevation_small">5dp</dimen>
 
     <dimen name="edit_text_height">48dp</dimen>
+
+    <dimen name="bottom_bar_height">50dp</dimen>
+    <dimen name="image_icon_dimen">15dp</dimen>
+    <dimen name="fab_custom_size">30dp</dimen>
+
+    <dimen name="empty_image_height">250dp</dimen>
+    <dimen name="empty_image_width">350dp</dimen>
+
+    <dimen name="item_campaigns_height">120dp</dimen>
+    <dimen name="item_campaigns_width">100dp</dimen>
 </resources>

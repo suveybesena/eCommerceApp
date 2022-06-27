@@ -53,7 +53,7 @@
             android:layout_margin="5dp"
             android:src="@drawable/ic_collection"
             app:borderWidth="0dp"
-            app:fabCustomSize="35dp"
+            app:fabCustomSize="@dimen/fab_custom_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

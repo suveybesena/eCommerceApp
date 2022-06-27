@@ -64,4 +64,7 @@ class RemoteRepositoryImpl @Inject constructor(
 
     override suspend fun deleteFromBag(id: Int): CRUDResponse =
         productAPI.deleteFromBag(id)
+
+    override suspend fun getCategoriesByUser(user: String): List<String> =
+        productAPI.getCategoriesByUser(user)
 }

@@ -9,4 +9,5 @@ sealed class HomeUiEvent {
     data class InsertProductToCollections(val collection: Collection) : HomeUiEvent()
     data class GetDiscountProducts(val categoryName: String) : HomeUiEvent()
     data class GetBasketItemsCount(val userId: String) : HomeUiEvent()
+    data class GetCategories(val user: String) : HomeUiEvent()
 }

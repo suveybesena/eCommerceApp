@@ -122,6 +122,8 @@ class HomeFragment() : Fragment() {
         homeViewModel.handleEvent(HomeUiEvent.GetDiscountProducts(discount))
         homeViewModel.handleEvent(HomeUiEvent.GetAllProducts)
         homeViewModel.handleEvent(HomeUiEvent.GetBasketItemsCount(userId))
+        val user = "suveybesenakucuk"
+        homeViewModel.handleEvent(HomeUiEvent.GetCategories(user))
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel._uiState.collect { state ->
@@ -150,6 +152,16 @@ class HomeFragment() : Fragment() {
                         homeBinding?.apply {
                             tvBasketItemCount.text = count.toString()
                         }
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                homeViewModel._uiState.collect { state ->
+                    state.categories.let { categories ->
+                        println(categories)
                     }
                 }
             }

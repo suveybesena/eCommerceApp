@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/ivEmptyImage"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/empty_image_width"
+        android:layout_height="@dimen/empty_image_height"
         android:src="@drawable/doughnut"
         app:layout_constraintBottom_toBottomOf="@id/rvMyCollections"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         style="@style/title_categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/item_padding"
         android:fontFamily="@font/roboto"
         android:padding="@dimen/categories_text_padding"
         android:text="@string/check_this_out"

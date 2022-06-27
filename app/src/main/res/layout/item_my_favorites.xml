@@ -54,7 +54,7 @@
                 style="@style/floating_action_button"
                 android:src="@drawable/ic_fav"
                 app:borderWidth="0dp"
-                app:fabCustomSize="35dp"
+                app:fabCustomSize="@dimen/fab_custom_size"
                 android:layout_margin="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

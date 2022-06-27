@@ -10,4 +10,5 @@
     <color name="background">#DCFCFCFC</color>
     <color name="button_text">#1c1c1c</color>
     <color name="search_bg">#f9f9f9</color>
+    <color name="tab_text_color">#C3C3C3</color>
 </resources>

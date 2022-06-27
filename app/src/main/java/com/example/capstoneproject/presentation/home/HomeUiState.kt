@@ -8,5 +8,6 @@ data class HomeUiState(
     val products: List<Product>? = null,
     val allProducts: MutableList<Product>? = null,
     val discountProducts: MutableList<Product>? = null,
-    val basketItemsCount: Int? = null
+    val basketItemsCount: Int? = null,
+    val categories: List<String>? = null
 )

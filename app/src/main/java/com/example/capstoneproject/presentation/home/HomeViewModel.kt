@@ -8,6 +8,7 @@ import com.example.capstoneproject.data.entities.product.Favorites
 import com.example.capstoneproject.domain.usecase.local.product.GetBasketItemsCountUseCase
 import com.example.capstoneproject.domain.usecase.local.product.InsertProductToCollectionsUseCase
 import com.example.capstoneproject.domain.usecase.local.product.InsertProductToFavoritesUseCase
+import com.example.capstoneproject.domain.usecase.remote.product.GetAllCategoriesByUserUseCase
 import com.example.capstoneproject.domain.usecase.remote.product.GetAllProductsByNameUseCase
 import com.example.capstoneproject.domain.usecase.remote.product.GetProductsByCategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +22,8 @@ class HomeViewModel @Inject constructor(
     private val insertProductToCollectionsUseCase: InsertProductToCollectionsUseCase,
     private val getAllProductsFromUseCase: GetAllProductsByNameUseCase,
     private val getProductsByCategoriesUseCase: GetProductsByCategoriesUseCase,
-    private val getBasketItemsCountUseCase: GetBasketItemsCountUseCase
+    private val getBasketItemsCountUseCase: GetBasketItemsCountUseCase,
+    private val getCategoriesUseCase: GetAllCategoriesByUserUseCase
 
 ) :
     ViewModel() {
@@ -45,6 +47,23 @@ class HomeViewModel @Inject constructor(
             }
             is HomeUiEvent.GetBasketItemsCount -> {
                 getBasketItemsCount(uiEvent.userId)
+            }
+            is HomeUiEvent.GetCategories -> {
+                getCategories(uiEvent.user)
+            }
+        }
+    }
+
+    private fun getCategories(user: String) {
+        viewModelScope.launch {
+            getCategoriesUseCase.invoke(user).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
+                            state.copy(categories = resultState.data)
+                        }
+                    }
+                }
             }
         }
     }

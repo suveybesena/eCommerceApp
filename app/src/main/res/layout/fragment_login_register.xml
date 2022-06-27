@@ -24,7 +24,7 @@
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/button_text"
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="#C3C3C3"
+            app:tabTextColor="@color/tab_text_color"
             app:layout_constraintBottom_toTopOf="@id/vpLoginRegister"
             app:layout_constraintTop_toTopOf="parent"
             />
