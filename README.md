@@ -13,6 +13,12 @@ Technologies I use in this app;
   <li>Work Manager</li>
 </ul>
 
+<h3>App Video</h3>
+
+
+https://user-images.githubusercontent.com/85364012/175952851-f7e6f68d-9dc1-42e0-a5cc-c5f6c0b16e9e.mp4
+
+
 <h3>App Images</h3>
 
 <img src="https://user-images.githubusercontent.com/85364012/175893985-b3e60122-8fb4-42e7-9919-c6986d61859c.jpg" width=30% height=30%>
@@ -37,6 +43,5 @@ Technologies I use in this app;
 
 <img src="https://user-images.githubusercontent.com/85364012/175897518-07893a9e-0b2a-4d6e-b4a9-2261e54e262a.jpg" width=20% height=20%> 
 
-<h3>App Video</h3>
 
 
