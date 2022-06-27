@@ -1,4 +1,5 @@
 # Up School Android Development Bootcamp Capstone Project
+<img src="https://user-images.githubusercontent.com/85364012/175973064-ba9b0db3-7823-4912-a57d-ef13d6e6efae.jpeg" width=30% height=30%>
 
 This app is an e-commerce application that I made as an Up School bootcamp graduation project.
 
