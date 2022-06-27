@@ -16,8 +16,7 @@ Technologies I use in this app;
 
 <h3>App Video</h3>
 
-
-https://user-images.githubusercontent.com/85364012/175952851-f7e6f68d-9dc1-42e0-a5cc-c5f6c0b16e9e.mp4
+https://user-images.githubusercontent.com/85364012/176014960-19b89ecc-4b00-4f55-9b04-77fd52ffe49d.mp4
 
 
 <h3>App Images</h3>
@@ -30,7 +29,7 @@ https://user-images.githubusercontent.com/85364012/175952851-f7e6f68d-9dc1-42e0-
 
 <h3>Home | Categories | Detail </h3>
 
-<img src="https://user-images.githubusercontent.com/85364012/175896008-87e7065f-a216-4358-aa5e-8f1a7bc0d22c.jpg" width=20% height=20%> <img src="https://user-images.githubusercontent.com/85364012/175896028-493d68ed-e6a3-480b-a224-ce2a62bed772.jpg" width=20% height=20%> <img src="https://user-images.githubusercontent.com/85364012/175896060-681dfef9-4424-4b15-a663-f4cf1c1cdbe3.jpg" width=20% height=20%> <img src="https://user-images.githubusercontent.com/85364012/175896076-9e0f4aa6-93c8-4b3c-a016-fe32b018af6c.jpg" width=20% height=20%>
+<img src="https://user-images.githubusercontent.com/85364012/176015252-da3a95a0-725e-46f0-b096-271d1ad32e4e.jpeg" width=20% height=20%> <img src="https://user-images.githubusercontent.com/85364012/175896028-493d68ed-e6a3-480b-a224-ce2a62bed772.jpg" width=20% height=20%> <img src="https://user-images.githubusercontent.com/85364012/175896060-681dfef9-4424-4b15-a663-f4cf1c1cdbe3.jpg" width=20% height=20%> <img src="https://user-images.githubusercontent.com/85364012/175896076-9e0f4aa6-93c8-4b3c-a016-fe32b018af6c.jpg" width=20% height=20%>
 
 <h3>Favorites | Collections</h3>
 
