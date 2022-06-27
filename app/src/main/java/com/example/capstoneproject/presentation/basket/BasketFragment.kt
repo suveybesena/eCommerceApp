@@ -184,6 +184,7 @@ class BasketFragment() : Fragment() {
                 alertDialog.show()
                 alertDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
             }
+
             override fun onFinish() {
                 alertDialog.dismiss()
                 requireView().findNavController()
