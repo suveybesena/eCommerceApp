@@ -88,6 +88,7 @@ class BasketFragment() : Fragment() {
         basketViewModel.handleEvent(BasketUiEvent.GetAllBasketItems(userId))
         basketViewModel.handleEvent(BasketUiEvent.GetBasketItemCount(userId))
         basketViewModel.handleEvent(BasketUiEvent.GetBagBasketFromAPI(userId))
+        println(userId)
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 basketViewModel._uiState.collect { state ->

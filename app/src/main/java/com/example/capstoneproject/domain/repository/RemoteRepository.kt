@@ -28,14 +28,6 @@ interface RemoteRepository {
     suspend fun getSaleProducts(): List<ProductsItem>
     suspend fun getProductsByName(user: String): List<ProductsItem>
 
-    suspend fun signUp(
-        email: String,
-        password: String,
-        name: String,
-        phone: String,
-        address: String
-    ): CRUDResponse
-
     suspend fun getBagProductsByUser(
         user: String,
     ): List<ProductsItem>

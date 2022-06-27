@@ -77,7 +77,6 @@ class LoginFragment : Fragment() {
                     this?.apply()
                 }
             }
-
             bvForgotPassword.setOnClickListener {
                 findNavController().navigate(R.id.action_loginRegisterFragment_to_forgotFragment)
             }

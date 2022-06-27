@@ -54,6 +54,7 @@ class PurchasedFragment : Fragment() {
                 purchasedViewModel._uiState.collect { state ->
                     state.purchasedProducts.let { flow ->
                         flow?.collect { purchased ->
+                            println(purchased)
                             if (purchased.isNotEmpty()) {
                                 purchasedBinding?.apply {
                                     layoutEmpty.visibility = View.GONE

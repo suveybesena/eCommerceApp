@@ -3,12 +3,10 @@ package com.example.capstoneproject.data.repository
 import com.example.capstoneproject.data.model.CRUDResponse
 import com.example.capstoneproject.data.model.ProductsItem
 import com.example.capstoneproject.data.remote.ProductAPI
-import com.example.capstoneproject.data.remote.UserAPI
 import com.example.capstoneproject.domain.repository.RemoteRepository
 import javax.inject.Inject
 
 class RemoteRepositoryImpl @Inject constructor(
-    private val userAPI: UserAPI,
     private val productAPI: ProductAPI
 
 ) : RemoteRepository {
@@ -49,15 +47,6 @@ class RemoteRepositoryImpl @Inject constructor(
 
     override suspend fun getProductsByName(user: String): List<ProductsItem> =
         productAPI.getProductsByName(user)
-
-    override suspend fun signUp(
-        email: String,
-        password: String,
-        name: String,
-        phone: String,
-        address: String
-    ): CRUDResponse =
-        userAPI.signUp(email, password, name, phone, address)
 
     override suspend fun getBagProductsByUser(user: String): List<ProductsItem> =
         productAPI.getBagProductsByUser(user)

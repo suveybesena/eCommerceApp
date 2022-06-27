@@ -2,7 +2,6 @@ package com.example.capstoneproject.di
 
 import com.example.capstoneproject.common.Constant.BASE_URL
 import com.example.capstoneproject.data.remote.ProductAPI
-import com.example.capstoneproject.data.remote.UserAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,11 +35,5 @@ object RemoteModule {
     @Singleton
     fun provideProductAPI(retrofit: Retrofit): ProductAPI {
         return retrofit.create(ProductAPI::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideUserAPI(retrofit: Retrofit): UserAPI {
-        return retrofit.create(UserAPI::class.java)
     }
 }
