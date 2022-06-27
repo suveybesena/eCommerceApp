@@ -21,7 +21,8 @@ https://user-images.githubusercontent.com/85364012/176014960-19b89ecc-4b00-4f55-
 
 <h3>App Images</h3>
 
-<img src="https://user-images.githubusercontent.com/85364012/175893985-b3e60122-8fb4-42e7-9919-c6986d61859c.jpg" width=30% height=30%>
+<img src="https://user-images.githubusercontent.com/85364012/176016419-1afdba67-6495-41df-95d4-cc88b6dc3f3d.jpg" width=35% height=35%>
+
 
 <h3>Splash Screen | Login | Register </h3>
 
