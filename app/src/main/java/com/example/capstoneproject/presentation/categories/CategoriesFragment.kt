@@ -1,6 +1,5 @@
 package com.example.capstoneproject.presentation.categories
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -115,10 +114,6 @@ class CategoriesFragment : Fragment() {
     }
 
     private fun addCollection(product: Product) {
-        val sharedPref = activity?.getSharedPreferences(
-            "getSharedPref", Context.MODE_PRIVATE
-        )
-        val userId = sharedPref?.getString(Constant.SHARED_PREF_KEY, null)
         val collectionProduct =
             Collection(
                 product.productTitle,
