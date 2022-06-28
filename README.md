@@ -10,7 +10,7 @@ Technologies I use in this app;
   <li>Dependency Injection(Hilt)</li>
   <li>Coroutines&Flows</li>
   <li>Glide</li>
-  <li>Google Maps</li>
+  <li>Google Maps SDK</li>
   <li>Work Manager</li>
 </ul>
 
